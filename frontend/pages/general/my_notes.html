@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes Workspace - My Study Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/my_notes.css">
+    <script src="../../js/api.js"></script>
+</head>
+
+<body class="dash-body">
+
+    
+        <nav class="dash-nav">
+        <a href="../index.html" class="logo">
+            <i class="fa-solid fa-user-graduate"></i>
+            <span>My Study Life</span>
+        </a>
+        <ul class="nav_links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="standard_materials.html">E-Books</a></li>
+            <li><a href="quiz_selection.html">Quiz</a></li>
+            <li><a href="my_notes.html">Notes</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li id="course-nav" style="display:none;"></li>
+            <li><a href="../auth/logout.html" class="logout-btn">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="workspace-main">
+        <div class="container">
+            <div class="search-filter-section">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-notes" placeholder="Search your notes...">
+                </div>
+                <div class="filter-box">
+                    <select id="sort-filter">
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="starred">Starred</option>
+                        <option value="az">A - Z</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+
+           
+            <div class="editor-section">
+                <div class="note-editor-card">
+                    <div class="editor-row">
+                        <input type="text" id="note-title-input" class="input-field title-input" placeholder="Note Title">
+                    </div>
+                    <div class="editor-row">
+                        <textarea id="note-description-input" class="textarea-field" placeholder="Write your note here..."></textarea>
+                    </div>
+                    <div class="editor-footer">
+                        <div class="color-picker-group">
+                            <label>Note Color:</label>
+                            <input type="color" id="note-color-picker" value="#fff7b1" class="color-picker-btn">
+                        </div>
+                        <button class="add-note-btn" id="save-note-btn">Add Note</button>
+                    </div>
+                </div>
+            </div>
+
+         
+            <section class="notes-grid-section">
+                <div class="section-header">
+                    <h2>My Notes</h2>
+                </div>
+                <div class="notes-grid" id="notes-grid">
+                    <!-- Notes will be dynamically loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+    <div id="update-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Note</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-row">
+                    <label>Note Title</label>
+                    <input type="text" id="modal-note-title" class="input-field" placeholder="Note Title">
+                </div>
+                <div class="modal-row">
+                    <label>Note Content</label>
+                    <textarea id="modal-note-content" class="textarea-field"
+                        placeholder="Write your note here..."></textarea>
+                </div>
+                <div class="modal-row">
+                    <label>Note Color</label>
+                    <input type="color" id="modal-note-color" class="color-picker-btn">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel close-modal">Cancel</button>
+                <button class="btn-update">Update Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note View Modal -->
+    <div id="note-view-modal">
+        <div class="note-view-content">
+            <div class="note-view-header">
+                <h1 class="note-view-title" id="view-note-title"></h1>
+                <button class="close-note-view" onclick="closeNoteView()">&times;</button>
+            </div>
+            <div class="note-view-description" id="view-note-description"></div>
+            <div class="note-view-meta">
+                <span id="view-note-date"></span>
+                <div class="note-view-color" id="view-note-color"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Quick Link</h3>
+                <ul>
+                    <li><a href="general/about.html">About Us</a></li>
+                    <li><a href="general/contact.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Condition</a></li>
+                    <!-- <li><a href="faq.html">FAQs & Help</a></li> -->
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <div><i class="fa-solid fa-location-dot"></i> 111/1,Kamarajar Street, Chennai</div>
+                    <div><i class="fa-solid fa-phone"></i> +91 9360649867</div>
+                    <div><i class="fa-solid fa-envelope"></i> help@mystudylife.com</div>
+                </div>
+                <div class="social-icons-footer">
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Subscribe to our Newsletter</h3>
+                <div class="newsletter-box">
+                    <p>Subscribe now and join our growing community of learners committed to lifelong education!</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+                <div class="copyright">
+                    &copy; My Study Life, All Right Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+</body>
+
+</html>

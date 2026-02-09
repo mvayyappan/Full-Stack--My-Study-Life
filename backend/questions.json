@@ -1,0 +1,62 @@
+{
+  "tamil": [
+    {"text": "தமிழ் மொழி எந்த நாட்டின் முக்கிய மொழி?", "a": "தென்னாட்டு", "b": "வடக்கு", "c": "நடுப்பு", "d": "மேல்", "ans": "a"},
+    {"text": "தமிழ் மொழியின் தந்தை என அழைக்கப்படுபவர் யார்?", "a": "பாணினி", "b": "சிவக்கை", "c": "பாணனீ", "d": "ராம்கிருஷ்ணன்", "ans": "b"},
+    {"text": "சங்ககால இலக்கியத்தின் தொல்காப்பியம் எப்போது எழுதப்பட்டது?", "a": "1000 ஆண்டுக்கு முன்", "b": "2000 ஆண்டுக்கு முன்", "c": "1500 ஆண்டுக்கு முன்", "d": "500 ஆண்டுக்கு முன்", "ans": "b"},
+    {"text": "பெரியாழ்வாரின் பெயர் என்ன?", "a": "விஷ்ணுசித்தன்", "b": "வாலராயன்", "c": "பரிய", "d": "வாலி", "ans": "a"},
+    {"text": "கம்பராமாயணம் எந்த காண்டத்தை பேசுகிறது?", "a": "பாலகாண்டம்", "b": "மந்திரகாண்டம்", "c": "இராவணகாண்டம்", "d": "சுந்தரகாண்டம்", "ans": "c"},
+    {"text": "சிலப்பதிகாரம் எந்த நகரம் பற்றி பேசுகிறது?", "a": "மதுரை", "b": "வஞ்சிமா", "c": "கொட்டை", "d": "தஞ்சை", "ans": "b"},
+    {"text": "திருக்குறளை யார் எழுதினார்?", "a": "கம்பர்", "b": "திருவள்ளுவர்", "c": "புலிகலி", "d": "சிலம்பு", "ans": "b"},
+    {"text": "மணிமேகலை என்ற நூலின் ஆசிரியர் யார்?", "a": "சரவணபவ", "b": "மூதுரை", "c": "அமித", "d": "பரணி", "ans": "a"},
+    {"text": "மாணிக்கவாசகரின் திருவாசகம் பற்றி சொல்லுங்கள்", "a": "இலக்கியம்", "b": "கவிதை", "c": "சிவபக்தி", "d": "வரலாறு", "ans": "c"},
+    {"text": "சுந்தரர் எந்த கடவுளை வழிபட்டார்?", "a": "விஷ்ணு", "b": "சிவன்", "c": "பிரம்மா", "d": "கணேஷ்", "ans": "b"}
+  ],
+  "english": [
+    {"text": "Who is the author of 'To Kill a Mockingbird'?", "a": "Harper Lee", "b": "Jane Austen", "c": "Mark Twain", "d": "Charles Dickens", "ans": "a"},
+    {"text": "What is the opposite of 'benevolent'?", "a": "Kind", "b": "Malevolent", "c": "Generous", "d": "Helpful", "ans": "b"},
+    {"text": "Which sentence is grammatically correct?", "a": "She go to school", "b": "She goes to school", "c": "She going to school", "d": "She gone to school", "ans": "b"},
+    {"text": "What does 'eloquent' mean?", "a": "Silent", "b": "Clear and expressive in speech", "c": "Angry", "d": "Confused", "ans": "b"},
+    {"text": "Identify the adjective in: 'The quick brown fox'", "a": "fox", "b": "brown", "c": "quick and brown", "d": "the", "ans": "c"},
+    {"text": "What is a metaphor?", "a": "A comparison using like or as", "b": "A direct comparison without like", "c": "A type of poem", "d": "A figure of speech", "ans": "b"},
+    {"text": "Which word is a noun?", "a": "Run", "b": "Beautiful", "c": "Dog", "d": "Quickly", "ans": "c"},
+    {"text": "What tense is 'has been running'?", "a": "Simple past", "b": "Present perfect continuous", "c": "Past continuous", "d": "Future tense", "ans": "b"},
+    {"text": "What is the plural of 'child'?", "a": "Childs", "b": "Childes", "c": "Children", "d": "Childer", "ans": "c"},
+    {"text": "Which is a synonym for 'happy'?", "a": "Sad", "b": "Joyful", "c": "Angry", "d": "Tired", "ans": "b"}
+  ],
+  "maths": [
+    {"text": "What is 15 + 23?", "a": "37", "b": "38", "c": "39", "d": "40", "ans": "b"},
+    {"text": "What is 50 - 18?", "a": "30", "b": "31", "c": "32", "d": "33", "ans": "c"},
+    {"text": "What is 7 × 8?", "a": "54", "b": "55", "c": "56", "d": "57", "ans": "c"},
+    {"text": "What is 144 ÷ 12?", "a": "11", "b": "12", "c": "13", "d": "14", "ans": "b"},
+    {"text": "What is 3² (3 squared)?", "a": "6", "b": "8", "c": "9", "d": "12", "ans": "c"},
+    {"text": "What is √25?", "a": "4", "b": "5", "c": "6", "d": "7", "ans": "b"},
+    {"text": "What is the LCM of 4 and 6?", "a": "12", "b": "10", "c": "8", "d": "20", "ans": "a"},
+    {"text": "Area of rectangle (length 5, width 3)?", "a": "8", "b": "15", "c": "16", "d": "20", "ans": "b"},
+    {"text": "What is 1/2 + 1/3?", "a": "2/5", "b": "3/5", "c": "5/6", "d": "3/6", "ans": "c"},
+    {"text": "What is 20% of 50?", "a": "10", "b": "15", "c": "20", "d": "25", "ans": "a"}
+  ],
+  "science": [
+    {"text": "What is the chemical formula for water?", "a": "H2O", "b": "CO2", "c": "O2", "d": "H2SO4", "ans": "a"},
+    {"text": "What is the smallest unit of life?", "a": "Atom", "b": "Molecule", "c": "Cell", "d": "Tissue", "ans": "c"},
+    {"text": "What planet is closest to the Sun?", "a": "Venus", "b": "Mercury", "c": "Earth", "d": "Mars", "ans": "b"},
+    {"text": "How many bones does a human have?", "a": "186", "b": "206", "c": "256", "d": "306", "ans": "b"},
+    {"text": "What gas do plants absorb to make food?", "a": "Oxygen", "b": "Nitrogen", "c": "Carbon dioxide", "d": "Hydrogen", "ans": "c"},
+    {"text": "What is the speed of light?", "a": "300,000 km/s", "b": "150,000 km/s", "c": "450,000 km/s", "d": "200,000 km/s", "ans": "a"},
+    {"text": "What is photosynthesis?", "a": "Breakdown of glucose", "b": "Production of food using sunlight", "c": "Respiration", "d": "Fermentation", "ans": "b"},
+    {"text": "What is the SI unit of force?", "a": "Newton", "b": "Joule", "c": "Pascal", "d": "Watt", "ans": "a"},
+    {"text": "What is DNA?", "a": "Protein", "b": "Genetic material", "c": "Carbohydrate", "d": "Lipid", "ans": "b"},
+    {"text": "How many chambers in a human heart?", "a": "2", "b": "3", "c": "4", "d": "5", "ans": "c"}
+  ],
+  "ss": [
+    {"text": "In which year did India gain independence?", "a": "1945", "b": "1946", "c": "1947", "d": "1948", "ans": "c"},
+    {"text": "What is the capital of Tamil Nadu?", "a": "Coimbatore", "b": "Chennai", "c": "Madurai", "d": "Salem", "ans": "b"},
+    {"text": "Who was the first President of India?", "a": "Jawaharlal Nehru", "b": "Dr. Rajendra Prasad", "c": "Sardar Vallabhbhai Patel", "d": "Subhas Chandra Bose", "ans": "b"},
+    {"text": "What is the national currency of India?", "a": "Dollar", "b": "Pound", "c": "Rupee", "d": "Yen", "ans": "c"},
+    {"text": "How many states are there in India?", "a": "26", "b": "28", "c": "29", "d": "30", "ans": "c"},
+    {"text": "What is the longest river in India?", "a": "Godavari", "b": "Brahmaputra", "c": "Ganges", "d": "Yamuna", "ans": "c"},
+    {"text": "Who was first Chief Minister of Tamil Nadu?", "a": "M. Karunanidhi", "b": "C. Rajagopalachari", "c": "J. Jayalalithaa", "d": "Periyar", "ans": "b"},
+    {"text": "What is the national anthem of India?", "a": "Vande Mataram", "b": "Jana Gana Mana", "c": "Padma Sampadah", "d": "Hindustan Hamara", "ans": "b"},
+    {"text": "Which is the largest state by area in India?", "a": "Rajasthan", "b": "Maharashtra", "c": "Madhya Pradesh", "d": "Andhra Pradesh", "ans": "a"},
+    {"text": "Who is the current PM of India (as of 2024)?", "a": "Rahul Gandhi", "b": "Narendra Modi", "c": "Amit Shah", "d": "Arvind Kejriwal", "ans": "b"}
+  ]
+}

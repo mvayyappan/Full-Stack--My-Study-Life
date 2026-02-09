@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - My Study Life</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="../../js/api.js"></script>
+
+</head>
+
+<body>
+
+
+    <nav class="dash-nav">
+        <a href="../index.html" class="logo">
+            <i class="fa-solid fa-user-graduate"></i>
+            <span>My Study Life</span>
+        </a>
+        <ul class="nav_links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="standard_materials.html">E-Books</a></li>
+            <li><a href="quiz_selection.html">Quiz</a></li>
+            <li><a href="my_notes.html">Notes</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li id="course-nav" style="display:none;"></li>
+            <li><a href="../auth/logout.html" class="logout-btn">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-info">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="profile-details">
+                    <h1 id="userName">Loading...</h1>
+                    <p><strong>Email:</strong> <span id="userEmail">-</span></p>
+                    <p><strong>Member Since:</strong> <span id="memberSince">-</span></p>
+                    <span class="course-badge" id="courseBadge">-</span>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="btn-edit" onclick="openEditTab()">
+                    <i class="fa-solid fa-pen"></i> Edit Profile
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalQuizzes">0</div>
+                <div class="stat-label">Quizzes Taken</div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-number" id="averageScore">0%</div>
+                <div class="stat-label">Average Score</div>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-number" id="accuracy">0%</div>
+                <div class="stat-label">Overall Accuracy</div>
+            </div>
+            <div class="stat-card red">
+                <div class="stat-number" id="streak">0</div>
+                <div class="stat-label">Current Streak</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('overview')">📊 Overview</button>
+            <button class="tab-btn" onclick="switchTab('edit')">✏️ Edit Profile</button>
+            <button class="tab-btn" onclick="switchTab('settings')">⚙️ Settings</button>
+            <button class="tab-btn" onclick="switchTab('achievements')">🏆 Achievements</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div class="tab-content active" id="overview">
+            <div id="overviewContent">
+                <h3>Profile Overview</h3>
+                <p style="color: #666; margin-top: 10px;">Your learning journey at a glance</p>
+                <div class="stats-grid" style="margin-top: 20px;">
+                    <div class="stat-card">
+                        <div class="stat-number" id="overviewQuizzes">0</div>
+                        <div class="stat-label">Total Questions Attempted</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct Answers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="studyHours">0</div>
+                        <div class="stat-label">Study Hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Profile Tab -->
+        <div class="tab-content" id="edit">
+            <div id="messageBox"></div>
+            <h3>Edit Your Profile</h3>
+            <form id="editProfileForm" style="margin-top: 20px;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="editFullName" placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="editEmail" placeholder="your@email.com" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Course</label>
+                    <select id="editCourse">
+                        <option value="TNPSC">TNPSC</option>
+                        <option value="SSC">SSC</option>
+                        <option value="Railway">Railway</option>
+                        <option value="Banking">Banking</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="button" class="btn-save" onclick="saveProfile()">Save Changes</button>
+                    <button type="button" class="btn-cancel" onclick="switchTab('overview')">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="tab-content" id="settings">
+            <div id="settingsMessageBox"></div>
+            <h3>Account Settings</h3>
+            <div style="margin-top: 20px;">
+                <h4 style="margin-bottom: 20px; color: #333;">Change Password</h4>
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" id="currentPassword" placeholder="Enter current password">
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" id="newPassword" placeholder="Enter new password" minlength="8">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password" minlength="8">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="updatePassword()">Update Password</button>
+                </form>
+
+                <hr style="margin: 30px 0;">
+
+                <div class="settings-section danger-zone">
+                    <h3>Danger Zone</h3>
+                    <p>Once you delete your account, there is no going back. Please be certain.</p>
+                    <button class="btn btn-danger" onclick="handleDeleteAccount()">
+                        <i class="fa-solid fa-trash"></i> Delete Account
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Tab -->
+        <div class="tab-content" id="achievements">
+            <h3>Your Achievements</h3>
+            <div class="achievement-list" style="margin-top: 20px;">
+                <div class="achievement-badge">
+                    <i class="fa-solid fa-star"></i>
+                    <p>First Quiz</p>
+                </div>
+                <div class="achievement-badge">
+                    <i class="fa-solid fa-fire"></i>
+                    <p>7-Day Streak</p>
+                </div>
+                <div class="achievement-badge">
+                    <i class="fa-solid fa-trophy"></i>
+                    <p>Perfect Score</p>
+                </div>
+                <div class="achievement-badge">
+                    <i class="fa-solid fa-crown"></i>
+                    <p>Top Performer</p>
+                </div>
+                <div class="achievement-badge">
+                    <i class="fa-solid fa-book"></i>
+                    <p>Knowledge Seeker</p>
+                </div>
+                <div class="achievement-badge">
+                    <i class="fa-solid fa-medal"></i>
+                    <p>Complete Course</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load profile on page load
+        document.addEventListener('DOMContentLoaded', async function () {
+            if (!MS_API.isLoggedIn()) {
+                window.location.href = '../auth/login.html';
+                return;
+            }
+            await loadProfileData();
+        });
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+        }
+
+        async function loadProfileData() {
+            try {
+                const res = await MS_API.getCurrentUser();
+                if (!res.success) {
+                    alert('Session expired. Please login again.');
+                    window.location.href = '../auth/login.html';
+                    return;
+                }
+
+                const user = res.data;
+
+                // Update header
+                document.getElementById('userName').textContent = user.full_name || 'User';
+                document.getElementById('userEmail').textContent = user.email;
+                document.getElementById('courseBadge').textContent = user.course || 'General';
+
+                // Format date
+                const joinDate = new Date(user.created_at);
+                document.getElementById('memberSince').textContent = joinDate.toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
+
+                // Load stats
+                await loadUserStats();
+
+                // Fill edit form
+                document.getElementById('editFullName').value = user.full_name || '';
+                document.getElementById('editEmail').value = user.email;
+                document.getElementById('editCourse').value = user.course || 'TNPSC';
+
+            } catch (error) {
+                console.error('Error loading profile:', error);
+            }
+        }
+
+        async function loadUserStats() {
+            try {
+                const res = await MS_API.getUserStats();
+                if (res.success) {
+                    const stats = res.data;
+                    document.getElementById('totalQuizzes').textContent = stats.total_quizzes || 0;
+                    document.getElementById('averageScore').textContent = Math.round(stats.average_score || 0) + '%';
+                    document.getElementById('accuracy').textContent = Math.round(stats.accuracy || 0) + '%';
+                    document.getElementById('streak').textContent = stats.current_streak || 0;
+                    document.getElementById('overviewQuizzes').textContent = stats.total_questions || 0;
+                    document.getElementById('correctAnswers').textContent = stats.correct_answers || 0;
+                    document.getElementById('studyHours').textContent = Math.round(stats.study_hours || 0);
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        async function saveProfile() {
+            const fullName = document.getElementById('editFullName').value;
+            const course = document.getElementById('editCourse').value;
+
+            if (!fullName.trim()) {
+                showMessage('messageBox', 'Please enter your full name', 'error');
+                return;
+            }
+
+            const res = await MS_API.updateProfile(fullName, course);
+            if (res.success) {
+                showMessage('messageBox', 'Profile updated successfully!', 'success');
+                setTimeout(() => {
+                    loadProfileData();
+                    switchTab('overview');
+                }, 1500);
+            } else {
+                showMessage('messageBox', 'Failed to update profile', 'error');
+            }
+        }
+
+        async function updatePassword() { // Changed name to avoid collision
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (!currentPassword || !newPassword || !confirmPassword) {
+                showMessage('settingsMessageBox', 'All fields are required', 'error');
+                return;
+            }
+            if (newPassword !== confirmPassword) {
+                showMessage('settingsMessageBox', 'Passwords do not match', 'error');
+                return;
+            }
+
+            const res = await MS_API.changePassword(currentPassword, newPassword);
+            if (res.success) {
+                showMessage('settingsMessageBox', 'Password changed successfully!', 'success');
+                document.getElementById('passwordForm').reset();
+            } else {
+                showMessage('settingsMessageBox', res.detail || 'Failed to change password', 'error');
+            }
+        }
+
+        async function handleDeleteAccount() {
+            if (confirm('Are you absolutely sure? This action cannot be undone.') &&
+                confirm('Type "DELETE" in the next prompt to confirm.')) {
+
+                const promptVal = prompt('Please type DELETE to confirm:');
+                if (promptVal === 'DELETE') {
+                    const res = await MS_API.deleteAccount();
+                    if (res.success) {
+                        alert('Account deleted. Redirecting...');
+                        MS_API.clearToken();
+                        window.location.href = '../index.html';
+                    } else {
+                        alert('Failed to delete account');
+                    }
+                }
+            }
+        }
+
+        function showMessage(elementId, message, type) {
+            const box = document.getElementById(elementId);
+            box.textContent = message;
+            box.className = 'message ' + type;
+            setTimeout(() => { box.className = 'message'; box.textContent = ''; }, 4000);
+        }
+    </script>
+</body>
+
+</html>
