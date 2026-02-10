@@ -9,49 +9,6 @@ body {
   background: #f5f7fa;
 }
 
-.dash-nav {
-  background: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.dash-nav .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 20px;
-  font-weight: 700;
-  color: #667eea;
-  text-decoration: none;
-}
-
-.dash-nav .logo i {
-  font-size: 24px;
-}
-
-.dash-nav .nav_links {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-
-.dash-nav .nav_links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.dash-nav .nav_links a:hover {
-  color: #667eea;
-}
-
 .logout-btn {
   background: #ff4757;
   color: white !important;

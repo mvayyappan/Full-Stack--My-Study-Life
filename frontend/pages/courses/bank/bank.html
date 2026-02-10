@@ -10,21 +10,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
+  <script src="../../../js/api.js"></script>
 </head>
 
 <body>
-  <nav class="dash-nav">
-    <a href="../../index.html" class="logo">
-      <i class="fa-solid fa-user-graduate"></i>
-      <span>My Study Life</span>
-    </a>
-    <ul class="nav_links">
-      <li><a href="../../general/dashboard.html">Dashboard</a></li>
-      <li><a href="../../general/standard_materials.html">Materials</a></li>
-      <li><a href="../../general/quiz.html">Quiz</a></li>
-      <li><a href="../../auth/logout.html" class="logout-btn">Logout</a></li>
-    </ul>
-  </nav>
+    <nav class="dash-nav">
+        <a href="dashboard.html" class="logo">
+            <i class="fa-solid fa-user-graduate"></i>
+            <span>My Study Life</span>
+        </a>
+        <ul class="nav_links">
+            <li><a href="../../general/dashboard.html">Dashboard</a></li>
+            <li id="course-nav" style="display:none;"></li>
+            <li><a href="../../general/standard_materials.html">E-Books</a></li>
+            <li><a href="../../general/quiz_selection.html">Quiz</a></li>
+            <li><a href="../../general/my_notes.html">Notes</a></li>
+            <li><a href="../../general/profile.html">Profile</a></li>
+            <li><a href="../../auth/logout.html" class="logout-btn">Logout</a></li>
+        </ul>
+    </nav>
 
 
 
@@ -109,8 +113,7 @@
               <div class="accordion-header">E-Books <i class="fa-solid fa-chevron-down"></i></div>
               <div class="accordion-content">
                 <p>Comprehensive books for Prelims and Mains examinations...</p>
-                <a href="../../general/standard_materials.html"read-more-btn>Read More <i
-                    class="fa-solid fa-arrow-right"></i></a>
+                <a href="../../general/standard_materials.html" class="read-more-btn">Read More<i class="fa-solid fa-arrow-right"></i></a>
               </div>
             </div>
 

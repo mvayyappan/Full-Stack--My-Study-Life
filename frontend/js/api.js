@@ -33,7 +33,22 @@ async function handleLogin(e) {
     }
     const data = await res.json();
     setToken(data.access_token);
-    window.location.href = '../general/dashboard.html';
+    
+    // Get user course and redirect to course page
+    const userRes = await getCurrentUser();
+    if (userRes.success && userRes.data) {
+      const course = userRes.data.course;
+      const courseLinks = {
+        'TNPSC': '../courses/tnpsc/tnpsc.html',
+        'SSC': '../courses/ssc/ssc.html',
+        'Railway': '../courses/railway/railway.html',
+        'Banking': '../courses/bank/bank.html'
+      };
+      const courseUrl = courseLinks[course] || '../general/dashboard.html';
+      window.location.href = courseUrl;
+    } else {
+      window.location.href = '../general/dashboard.html';
+    }
   } catch (err) {
     showError('Network error');
     console.error(err);
@@ -99,6 +114,7 @@ function attachAuthHandlers() {
 
 document.addEventListener('DOMContentLoaded', () => {
   attachAuthHandlers();
+  loadCourseNav();
   if (window.location.pathname.includes('my_notes.html')) {
     attachNotesPageHandlers();
     loadAndRenderNotes();
@@ -253,6 +269,35 @@ async function getProgress() {
 }
 
 // ===== PROFILE FUNCTIONS =====
+async function loadCourseNav() {
+  const courseNavElement = document.getElementById('course-nav');
+  if (!courseNavElement) return;
+
+  try {
+    const res = await getCurrentUser();
+    if (!res.success || !res.data) return;
+
+    const course = res.data.course;
+    if (!course) return;
+
+    // Map course to URL
+    const courseLinks = {
+      'TNPSC': '../courses/tnpsc/tnpsc.html',
+      'SSC': '../courses/ssc/ssc.html',
+      'Railway': '../courses/railway/railway.html',
+      'Banking': '../courses/bank/bank.html'
+    };
+
+    const courseUrl = courseLinks[course];
+    if (courseUrl) {
+      courseNavElement.innerHTML = `<a href="${courseUrl}">${course}</a>`;
+      courseNavElement.style.display = 'block';
+    }
+  } catch (error) {
+    console.error('Error loading course nav:', error);
+  }
+}
+
 async function getCurrentUser() {
   const token = getToken();
   if (!token) return { success: false, data: null };
@@ -365,7 +410,8 @@ window.MS_API = {
   updateProfile,
   changePassword,
   deleteAccount,
-  getUserStats
+  getUserStats,
+  loadCourseNav
 };
 
 // ===== QUIZ PAGE HANDLERS =====

@@ -10,10 +10,7 @@ from config import settings
 from typing import Optional
 from pydantic import BaseModel
 
-router = APIRouter(
-    prefix="/api/auth",
-    tags=["Authentication"]
-)
+router = APIRouter(prefix="/api/auth",tags=["Authentication"])
 
 # Request schemas
 class UpdateProfileRequest(BaseModel):
@@ -143,8 +140,8 @@ def update_profile(
     # Update fields
     if request.full_name:
         user.full_name = request.full_name
-    if request.course:
-        user.course = request.course
+    if request.cours:
+        user.courses = request.course
     
     db.commit()
     db.refresh(user)
