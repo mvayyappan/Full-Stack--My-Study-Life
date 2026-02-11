@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Add the current directory to sys.path to allow imports to work on Vercel
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine
