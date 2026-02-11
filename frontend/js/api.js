@@ -1,4 +1,6 @@
-const baseUrl = 'http://127.0.0.1:8000';
+const baseUrl = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+  ? 'http://127.0.0.1:8000'
+  : window.location.origin;
 
 function getToken() {
   return localStorage.getItem('mst_token');
@@ -33,7 +35,7 @@ async function handleLogin(e) {
     }
     const data = await res.json();
     setToken(data.access_token);
-    
+
     // Get user course and redirect to course page
     const userRes = await getCurrentUser();
     if (userRes.success && userRes.data) {
