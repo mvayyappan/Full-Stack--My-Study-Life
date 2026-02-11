@@ -12,6 +12,13 @@ from routers import auth_router, quiz_router, progress_router, notes_router
 from config import settings
 
 # Create all database tables
+# Debug: Print DB Host to Vercel logs (excluding credentials)
+try:
+    db_host = settings.DATABASE_URL.split("@")[-1]
+    print(f"🚀 Connecting to database host: {db_host}")
+except Exception:
+    print("🚀 Connecting to database...")
+
 Base.metadata.create_all(bind=engine)
 
 # Create FastAPI app
