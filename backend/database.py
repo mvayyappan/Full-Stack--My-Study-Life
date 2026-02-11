@@ -3,8 +3,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 from config import settings
 
 # Create database engine (use settings.DATABASE_URL directly so installed DBAPI is used)
-engine = create_engine(
-    settings.DATABASE_URL,
+engine = create_engine(settings.DATABASE_URL,
     echo=True  # Set to False in production
 )
 

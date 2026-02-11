@@ -140,8 +140,8 @@ def update_profile(
     # Update fields
     if request.full_name:
         user.full_name = request.full_name
-    if request.cours:
-        user.courses = request.course
+    if request.course:
+        user.course = request.course
     
     db.commit()
     db.refresh(user)

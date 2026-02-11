@@ -20,9 +20,9 @@ class Settings(BaseSettings):
         try:
             parts = v.split("@")
             host_part = parts[-1] if len(parts) > 1 else "Unknown"
-            print(f"🚀 Database Host Detected: {host_part}")
+            print(f"Database Host Detected: {host_part}")
         except Exception:
-            print("🚀 Connecting to database...")
+            print("Connecting to database...")
 
         # Fix for Vercel/Heroku protocol mismatch
         if v.startswith("postgres://"):
