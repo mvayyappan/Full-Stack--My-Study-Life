@@ -9,12 +9,29 @@ class Settings(BaseSettings):
     @field_validator("DATABASE_URL", mode="before")
     @classmethod
     def fix_database_url(cls, v: str) -> str:
+        if not v or not isinstance(v, str):
+            print("⚠️ DATABASE_URL is missing or empty!")
+            return v
+        
+        # Clean the string (strip spaces/quotes often copied from dashboards)
+        v = v.strip().replace('"', '').replace("'", "")
+        
+        # Masked logging for debugging
+        try:
+            parts = v.split("@")
+            host_part = parts[-1] if len(parts) > 1 else "Unknown"
+            print(f"🚀 Database Host Detected: {host_part}")
+        except Exception:
+            print("🚀 Connecting to database...")
+
+        # Fix for Vercel/Heroku protocol mismatch
         if v.startswith("postgres://"):
             v = v.replace("postgres://", "postgresql://", 1)
         
         # Ensure we use psycopg2 driver
         if "postgresql://" in v and "+psycopg2" not in v:
             v = v.replace("postgresql://", "postgresql+psycopg2://", 1)
+        
         return v
     
     # JWT
