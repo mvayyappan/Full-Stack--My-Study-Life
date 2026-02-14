@@ -208,6 +208,15 @@
             if (selectedSubject) filtered = filtered.filter(q => q.subject === selectedSubject);
             if (selectedDifficulty) filtered = filtered.filter(q => q.difficulty === selectedDifficulty);
 
+            const subjectOrder = { 'Tamil': 1, 'English': 2, 'Maths': 3, 'Science': 4, 'SS': 5 };
+            const difficultyOrder = { 'Easy': 1, 'Medium': 2, 'Hard': 3 };
+            
+            filtered.sort((a, b) => {
+                if (a.grade !== b.grade) return a.grade - b.grade;
+                if (a.subject !== b.subject) return (subjectOrder[a.subject] || 0) - (subjectOrder[b.subject] || 0);
+                return (difficultyOrder[a.difficulty] || 0) - (difficultyOrder[b.difficulty] || 0);
+            });
+
             const grid = document.getElementById('quizGrid');
 
             if (filtered.length === 0) {

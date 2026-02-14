@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/materials.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="../../js/config.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/quiz.js"></script>
+    <script src="../../js/notes.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/handlers.js"></script>
 </head>
 
 <body>
@@ -19,6 +25,7 @@
         </a>
         <ul class="nav_links">
             <li><a href="../general/dashboard.html">Dashboard</a></li>
+            <li id="course-nav" style="display:none;"></li>
             <li><a href="../general/standard_materials.html">Materials</a></li>
             <li><a href="../general/quiz_selection.html">Quiz</a></li>
             <li><a href="../general/my_notes.html">Notes</a></li>
@@ -28,7 +35,8 @@
     </nav>
 
     <main class="container">
-        <div class="std-breadcrumb">My Study Life <span>&raquo;</span> 7th Standard Study Materials <span>&raquo;</span> Books</div>
+        <div class="std-breadcrumb">My Study Life <span>&raquo;</span> 7th Standard Study Materials <span>&raquo;</span>
+            Books</div>
 
         <div class="books-table-container">
             <!-- Term 1 -->
@@ -44,24 +52,29 @@
                 <tbody>
                     <tr>
                         <td>Tamil</td>
-                        <td><a href="https://drive.google.com/file/d/1PzLifKf9JKFdV-w0JmElVzbYKZie9YXU/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1PzLifKf9JKFdV-w0JmElVzbYKZie9YXU/view"
+                                class="download-link" target="_blank">Download</a></td>
                         <td rowspan="5"><a href="#" class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>English</td>
-                        <td><a href="https://drive.google.com/file/d/1vmYrExvUuHcvrDjvbmDhwcV8mgsvYFK4/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1vmYrExvUuHcvrDjvbmDhwcV8mgsvYFK4/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Mathematics</td>
-                        <td><a href="https://drive.google.com/file/d/1dOLywhy187G_zSmdmJzKL2_CFQE2VPLa/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1dOLywhy187G_zSmdmJzKL2_CFQE2VPLa/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Science</td>
-                        <td><a href="https://drive.google.com/file/d/1VzmEbha3WDAeDmj1mWtwXAI5ZLsewNtG/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1VzmEbha3WDAeDmj1mWtwXAI5ZLsewNtG/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Social Science</td>
-                        <td><a href="https://drive.google.com/file/d/1rOlgmTUwNu79xDpDLa0Chiy_VLLkpd7H/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1rOlgmTUwNu79xDpDLa0Chiy_VLLkpd7H/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -78,24 +91,29 @@
                 <tbody>
                     <tr>
                         <td>Tamil</td>
-                        <td><a href="https://drive.google.com/file/d/1PzLifKf9JKFdV-w0JmElVzbYKZie9YXU/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1PzLifKf9JKFdV-w0JmElVzbYKZie9YXU/view"
+                                class="download-link" target="_blank">Download</a></td>
                         <td rowspan="5"><a href="#" class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>English</td>
-                        <td><a href="https://drive.google.com/file/d/1vmYrExvUuHcvrDjvbmDhwcV8mgsvYFK4/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1vmYrExvUuHcvrDjvbmDhwcV8mgsvYFK4/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Mathematics</td>
-                        <td><a href="https://drive.google.com/file/d/1I5JNYFy8HUkt5vpO17RjG4vI17Yt8GE2/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1I5JNYFy8HUkt5vpO17RjG4vI17Yt8GE2/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Science</td>
-                        <td><a href="https://drive.google.com/file/d/1CTEugQBtcx7UaHh5F87Mznjnlaoi-aP8/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1CTEugQBtcx7UaHh5F87Mznjnlaoi-aP8/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Social Science</td>
-                        <td><a href="https://drive.google.com/file/d/1U-LQx-wGesUXjRDUoCwJBdGAPKhi-0gH/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1U-LQx-wGesUXjRDUoCwJBdGAPKhi-0gH/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -113,24 +131,29 @@
                 <tbody>
                     <tr>
                         <td>Tamil</td>
-                        <td><a href="https://drive.google.com/file/d/1qbzEQjMVGsdfsS7348h1WRoI_D4uaLNy/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1qbzEQjMVGsdfsS7348h1WRoI_D4uaLNy/view"
+                                class="download-link" target="_blank">Download</a></td>
                         <td rowspan="5"><a href="#" class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>English</td>
-                        <td><a href="https://drive.google.com/file/d/1eVKK19jLH-GvMPFAepk45QVA7JJ7Nj6b/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1eVKK19jLH-GvMPFAepk45QVA7JJ7Nj6b/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Mathematics</td>
-                        <td><a href="https://drive.google.com/file/d/11_b4PMl_yZISFdWJyWBZdtXXemqB3FeD/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/11_b4PMl_yZISFdWJyWBZdtXXemqB3FeD/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Science</td>
-                        <td><a href="https://drive.google.com/file/d/1rg57-BuomErPZeB3Pj-_9LF7yYddh3c4/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1rg57-BuomErPZeB3Pj-_9LF7yYddh3c4/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Social Science</td>
-                        <td><a href="https://drive.google.com/file/d/1WocfQljguKBjUe8WqTi0B33R_kyllI6c/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1WocfQljguKBjUe8WqTi0B33R_kyllI6c/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -147,24 +170,29 @@
                 <tbody>
                     <tr>
                         <td>Tamil</td>
-                        <td><a href="https://drive.google.com/file/d/1qbzEQjMVGsdfsS7348h1WRoI_D4uaLNy/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1qbzEQjMVGsdfsS7348h1WRoI_D4uaLNy/view"
+                                class="download-link" target="_blank">Download</a></td>
                         <td rowspan="5"><a href="#" class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>English</td>
-                        <td><a href="https://drive.google.com/file/d/1eVKK19jLH-GvMPFAepk45QVA7JJ7Nj6b/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1eVKK19jLH-GvMPFAepk45QVA7JJ7Nj6b/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Mathematics</td>
-                        <td><a href="https://drive.google.com/file/d/1KtbcS4LK0LUOuTuT8slSfmv3PCntFEjo/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1KtbcS4LK0LUOuTuT8slSfmv3PCntFEjo/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Science</td>
-                        <td><a href="https://drive.google.com/file/d/1MB_eSx0EO_jf-UQJTTmE04usylV8naI7/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1MB_eSx0EO_jf-UQJTTmE04usylV8naI7/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Social Science</td>
-                        <td><a href="https://drive.google.com/file/d/1gHcorN6oE-2fgGQNjm1fK9rBNyiAYZKE/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1gHcorN6oE-2fgGQNjm1fK9rBNyiAYZKE/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -182,24 +210,29 @@
                 <tbody>
                     <tr>
                         <td>Tamil</td>
-                        <td><a href="https://drive.google.com/file/d/1aLv2-h3YQ7uu2D1S1vppYiEmXM87doV9/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1aLv2-h3YQ7uu2D1S1vppYiEmXM87doV9/view"
+                                class="download-link" target="_blank">Download</a></td>
                         <td rowspan="5"><a href="#" class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>English</td>
-                        <td><a href="https://drive.google.com/file/d/1cw2uYhYZMai9knOUY7efo1Vk3OOnBfOQ/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1cw2uYhYZMai9knOUY7efo1Vk3OOnBfOQ/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Mathematics</td>
-                        <td><a href="https://drive.google.com/file/d/1rsV9o0ykfL7QX7q7TqzPuNA4YmSNViIr/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1rsV9o0ykfL7QX7q7TqzPuNA4YmSNViIr/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Science</td>
-                        <td><a href="https://drive.google.com/file/d/1KiJmRXWXYpnPo3AkFqjAmu2_opBjk4m4/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1KiJmRXWXYpnPo3AkFqjAmu2_opBjk4m4/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Social Science</td>
-                        <td><a href="https://drive.google.com/file/d/1ucTrUigxKROFLr7rIKzYkM6ri37f4XH_/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1ucTrUigxKROFLr7rIKzYkM6ri37f4XH_/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -216,31 +249,36 @@
                 <tbody>
                     <tr>
                         <td>Tamil</td>
-                        <td><a href="https://drive.google.com/file/d/1aLv2-h3YQ7uu2D1S1vppYiEmXM87doV9/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1aLv2-h3YQ7uu2D1S1vppYiEmXM87doV9/view"
+                                class="download-link" target="_blank">Download</a></td>
                         <td rowspan="5"><a href="#" class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>English</td>
-                        <td><a href="https://drive.google.com/file/d/1cw2uYhYZMai9knOUY7efo1Vk3OOnBfOQ/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1cw2uYhYZMai9knOUY7efo1Vk3OOnBfOQ/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Mathematics</td>
-                        <td><a href="https://drive.google.com/file/d/1gM-WMX3N0e9vXxqpIQ20TnjIDtIrvNAy/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1gM-WMX3N0e9vXxqpIQ20TnjIDtIrvNAy/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Science</td>
-                        <td><a href="http://drive.google.com/file/d/1MCNr5uLfSo9NMZOMiEuZQal6h9YE37A4/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="http://drive.google.com/file/d/1MCNr5uLfSo9NMZOMiEuZQal6h9YE37A4/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                     <tr>
                         <td>Social Science</td>
-                        <td><a href="https://drive.google.com/file/d/1k4sAU6bh31mzN9TSIqK5dUDXg8K-wfVI/view" class="download-link" target="_blank">Download</a></td>
+                        <td><a href="https://drive.google.com/file/d/1k4sAU6bh31mzN9TSIqK5dUDXg8K-wfVI/view"
+                                class="download-link" target="_blank">Download</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </main>
 
-  <footer class="main-footer">
+    <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-column">
                 <h3>Quick Link</h3>
@@ -295,5 +333,3 @@
 </body>
 
 </html>
-
-
