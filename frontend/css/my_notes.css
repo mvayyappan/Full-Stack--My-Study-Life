@@ -4,7 +4,7 @@ body,
 .dash-body {
     background-color: #ffffff !important;
     background: #ffffff !important;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 nav {
     display: flex;

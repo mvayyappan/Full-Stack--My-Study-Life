@@ -26,12 +26,12 @@
             <span>My Study Life</span>
         </a>
         <ul class="nav_links">
-            <li><a href="dashboard.html">Dashboard</a></li>
             <li id="course-nav" style="display:none;"></li>
             <li><a href="standard_materials.html">E-Books</a></li>
             <li><a href="quiz_selection.html">Quiz</a></li>
             <li><a href="my_notes.html">Notes</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="dashboard.html">More courses</a></li>
             <li><a href="../auth/logout.html" class="logout-btn">Logout</a></li>
         </ul>
     </nav>
@@ -53,9 +53,10 @@
                 </div>
             </div>
             <div class="profile-actions">
-                <button class="btn-edit" onclick="openEditTab()">
+                <button class="btn-edit" onclick="switchTab('edit')">
                     <i class="fa-solid fa-pen"></i> Edit Profile
                 </button>
+                
             </div>
         </div>
 
@@ -84,7 +85,6 @@
             <button class="tab-btn active" onclick="switchTab('overview')">📊 Overview</button>
             <button class="tab-btn" onclick="switchTab('edit')">✏️ Edit Profile</button>
             <button class="tab-btn" onclick="switchTab('settings')">⚙️ Settings</button>
-            <button class="tab-btn" onclick="switchTab('achievements')">🏆 Achievements</button>
         </div>
 
         <!-- Overview Tab -->
@@ -174,37 +174,7 @@
             </div>
         </div>
 
-        <!-- Achievements Tab -->
-        <div class="tab-content" id="achievements">
-            <h3>Your Achievements</h3>
-            <div class="achievement-list" style="margin-top: 20px;">
-                <div class="achievement-badge">
-                    <i class="fa-solid fa-star"></i>
-                    <p>First Quiz</p>
-                </div>
-                <div class="achievement-badge">
-                    <i class="fa-solid fa-fire"></i>
-                    <p>7-Day Streak</p>
-                </div>
-                <div class="achievement-badge">
-                    <i class="fa-solid fa-trophy"></i>
-                    <p>Perfect Score</p>
-                </div>
-                <div class="achievement-badge">
-                    <i class="fa-solid fa-crown"></i>
-                    <p>Top Performer</p>
-                </div>
-                <div class="achievement-badge">
-                    <i class="fa-solid fa-book"></i>
-                    <p>Knowledge Seeker</p>
-                </div>
-                <div class="achievement-badge">
-                    <i class="fa-solid fa-medal"></i>
-                    <p>Complete Course</p>
-                </div>
-            </div>
-        </div>
-    </div>
+       
 
     <script>
         // Load profile on page load

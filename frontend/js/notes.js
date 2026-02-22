@@ -1,3 +1,13 @@
+// Convert URLs in text to clickable links
+function makeLinksClickable(text) {
+  if (!text) return text;
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/g;
+  return text.replace(urlRegex, (url) => {
+    const fullUrl = url.startsWith('http') ? url : 'https://' + url;
+    return `<a href="${fullUrl}" target="_blank" rel="noopener noreferrer" style="color: #0091ff; text-decoration: underline; cursor: pointer;"><i class="fa-solid fa-link"></i> ${url}</a>`;
+  });
+}
+
 // Notes API functions
 async function getNotes() {
   const token = window.MS_AUTH.getToken();
@@ -159,6 +169,7 @@ function renderNotesToGrid(notesList) {
     const date = new Date(note.created_at).toLocaleDateString('en-US', {
       month: 'short', day: 'numeric', year: 'numeric'
     });
+    const descriptionWithLinks = makeLinksClickable(note.description || '');
     return `
     <div class="note-card" data-id="${note.id}" style="background-color: ${note.color || '#fff7b1'};">
       <div class="card-left-accent"></div>
@@ -169,7 +180,7 @@ function renderNotesToGrid(notesList) {
           <span class="delete-btn"><i class="fa-solid fa-trash"></i></span>
         </div>
         <h3>${note.title}</h3>
-        <p class="note-text">${note.description || ''}</p>
+        <p class="note-text">${descriptionWithLinks}</p>
         <span class="note-date">${date}</span>
       </div>
     </div>
@@ -273,7 +284,7 @@ function attachNotesPageHandlers() {
         const note = allNotes.find(n => n.id == noteId);
         if (note) {
           document.getElementById('view-note-title').innerText = note.title;
-          document.getElementById('view-note-description').innerText = note.description || '';
+          document.getElementById('view-note-description').innerHTML = makeLinksClickable(note.description || '');
           document.getElementById('view-note-color').style.backgroundColor = note.color || '#fff7b1';
           document.getElementById('note-view-modal').classList.add('active');
         }

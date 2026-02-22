@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - My Study Life</title>
+    <link rel="stylesheet" href="../">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -24,48 +25,25 @@
             <span>My Study Life</span>
         </a>
         <ul class="nav_links">
-            <li><a href="dashboard.html">Dashboard</a></li>
             <li id="course-nav" style="display:none;"></li>
             <li><a href="standard_materials.html">E-Books</a></li>
             <li><a href="quiz_selection.html">Quiz</a></li>
             <li><a href="my_notes.html">Notes</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="dashboard.html">More courses</a></li>
             <li><a href="../auth/logout.html" class="logout-btn">Logout</a></li>
         </ul>
     </nav>
 
 
-    <section class="dashboard-hero">
-        <div class="container hero-container">
-            <div class="hero-text">
-                <p class="welcome-tag">COMPETITIVE EXAM PORTAL</p>
-                <h1>Empowering <span>Aspirants</span> to reach their goals.</h1>
-                <p class="hero-desc">Access top-tier resources for TNPSC, Banking, Railways, and SSC exams. Your path to
-                    a government career begins with focused preparation.</p>
-                <div class="hero-actions">
-                    <button class="btn-primary"
-                        onclick="document.getElementById('tnpsc').scrollIntoView({behavior: 'smooth'})">Get
-                        Started</button>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-frame">
-                    <img style="border-radius:100%;" src="../../assets/images/main.jpeg" alt="Aspirant Profile">
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="tnpsc" class="path-section">
         <div class="container journey-row">
             <div class="journey-text">
-                <span class="path-label">PATH 02</span>
+                <span class="path-label">PATH 01</span>
                 <h2>TNPSC Exam</h2>
                 <p>Master the Tamil Nadu Public Service Commission exams. We provide structured notes, current affairs,
                     and previous year question papers specifically for Group 1, 2, and 4 services.</p>
                 <div class="standards-badge">Group 1 • 2 • 4</div>
-                <button class="path-btn" onclick="window.location.href='../courses/tnpsc/tnpsc.html'">Learn<i
-                        class="fa-solid fa-arrow-right"></i></button>
             </div>
             <div class="journey-image">
                 <img src="../../assets/images/Screenshot 2026-01-19 204529.png" alt="TNPSC Exam Prep">
@@ -76,13 +54,11 @@
     <section id="bank" class="path-section alt-bg">
         <div class="container journey-row reverse">
             <div class="journey-text">
-                <span class="path-label">PATH 03</span>
+                <span class="path-label">PATH 02</span>
                 <h2>Bank Exams</h2>
                 <p>Excel in SBI, IBPS, and RBI competitive exams. Access comprehensive materials for Quantitative
                     Aptitude, Reasoning, and Banking Awareness to stay ahead of the curve.</p>
                 <div class="standards-badge">IBPS • SBI • RBI</div>
-                <button class="path-btn" onclick="window.location.href='../courses/bank/bank.html'">Learn<i
-                        class="fa-solid fa-arrow-right"></i></button>
             </div>
             <div class="journey-image">
                 <img src="../../assets/images/Bank.jpeg" alt="Bank Exam Prep">
@@ -93,13 +69,12 @@
     <section id="railway" class="path-section">
         <div class="container journey-row">
             <div class="journey-text">
-                <span class="path-label">PATH 04</span>
+                <span class="path-label">PATH 03</span>
                 <h2>Railway Exam</h2>
                 <p>Prepare for RRB NTPC, Group D, and ALP exams with our curated technical and non-technical study kits.
                     Master General Awareness and Science concepts with ease.</p>
                 <div class="standards-badge">RRB NTPC • Group D</div>
-                <button class="path-btn" onclick="window.location.href='../courses/railway/railway.html'">Learn<i
-                        class="fa-solid fa-arrow-right"></i></button>
+                
             </div>
             <div class="journey-image">
                 <img src="../../assets/images/Social media customers troll Vande Bharat trains 'gracefully' crossing paths on parallel trac___.jpeg"
@@ -111,13 +86,12 @@
     <section id="ssc" class="path-section alt-bg">
         <div class="container journey-row reverse">
             <div class="journey-text">
-                <span class="path-label">PATH 05</span>
+                <span class="path-label">PATH 04</span>
                 <h2>SSC Exam</h2>
                 <p>Join the Central Government services by cracking SSC CGL, CHSL, and MTS exams. Our resources cover
                     General Intelligence, English, and General Awareness in depth.</p>
                 <div class="standards-badge">CGL • CHSL • MTS</div>
-                <button class="path-btn" onclick="window.location.href='../courses/ssc/ssc.html'">Learn<i
-                        class="fa-solid fa-arrow-right"></i></button>
+                
             </div>
             <div class="journey-image">
                 <img src="../../assets/images/ssc.jpeg" alt="SSC Exam Prep">
