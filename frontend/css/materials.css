@@ -7,137 +7,8 @@
     --qb-text-light: #64748b;
 }
 
-
-
-
-
-
-.qb-hero-landing {
-    padding: 100px 20px;
-    text-align: center;
-    background: linear-gradient(to bottom, #f8fafc, #ffffff);
-    border-bottom: 1px solid #f1f5f9;
-}
-
-.hero-main-title {
-    font-size: 56px;
-    font-weight: 800;
-    color: var(--qb-primary);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-.hero-main-title i {
-    color: var(--qb-primary);
-}
-
-.hero-subtitle {
-    font-size: 22px;
-    color: #475569;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.btn-click-start {
-    display: inline-block;
-    padding: 18px 45px;
-    background: linear-gradient(135deg, var(--qb-primary) 0%, var(--qb-secondary) 100%);
-    color: white;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 18px;
-    border-radius: 50px;
-    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    letter-spacing: 1px;
-}
-
-.btn-click-start:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 35px rgba(79, 70, 229, 0.4);
-}
-
-/* --- Grid & Cards --- */
-.qb-section {
-    padding: 80px 0;
-    background: var(--qb-bg);
-}
-
-.qb-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.qb-card {
-    background: var(--qb-card-bg);
-    padding: 40px 30px;
-    border-radius: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-}
-
-.qb-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    border-color: var(--qb-primary);
-}
-
-.qb-card i {
-    font-size: 40px;
-    color: var(--qb-primary);
-    margin-bottom: 20px;
-}
-
-.qb-card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: var(--qb-text);
-}
-
-.qb-card p {
-    color: var(--qb-text-light);
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-
-.qb-badge {
-    display: inline-block;
-    padding: 5px 15px;
-    background: #eef2ff;
-    color: var(--qb-primary);
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.section-label {
-    text-align: center;
-    color: var(--qb-primary);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.qb-section h2 {
-    text-align: center;
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--qb-text);
-}
-
-/* --- Standards Selection Page --- */
 .qb-index-title {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 800;
     color: white;
     margin: 60px 0 20px;
@@ -149,14 +20,14 @@
     color: white;
     max-width: 900px;
     margin: 0 auto 50px;
-    line-height: 1.7;
-    font-size: 16px;
+    line-height: 1.9;
+    font-size: 20px;
 }
 
 .standards-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
     margin-bottom: 80px;
     width: 100%;
     padding: 20px 40px;

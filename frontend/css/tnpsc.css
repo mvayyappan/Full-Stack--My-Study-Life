@@ -16,8 +16,8 @@
 }
 
 .course-hero {
-    background-color: white;
-    min-height: 100vh;
+    background-color: var(--hero-bg);
+    min-height: 110vh; /* Reduced from 100vh for a more compact feel */
     display: flex;
     align-items: center;
     padding: 40px 20px;
@@ -25,14 +25,12 @@
 }
 
 .hero-container {
-    max-width: 1100px;
+    max-width: 1100px; /* Slightly narrower for better focus */
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    /* Changed from space-between */
-    gap: 80px;
-
+    justify-content: flex-start; /* Changed from space-between */
+    gap: 80px; /* Increased gap to give breathing room between image and text */
 }
 
 .hero-text-side {
@@ -92,7 +90,8 @@
 .hero-image-side img {
     width: 100%;
     height: auto;
-    max-width: 350px;
+    max-width: 250px;
+    /* Reduced from 400px */
     object-fit: contain;
 }
 
@@ -133,8 +132,7 @@
 .tnpsc-section {
     padding: 60px 20px;
     background-color: var(--bg-light);
-    min-height: auto;
-    /* Removed 80vh to allow content to flow naturally */
+    min-height: auto; /* Removed 80vh to allow content to flow naturally */
 }
 
 .tnpsc-container {
