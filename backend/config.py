@@ -16,7 +16,7 @@ class Settings(BaseSettings):
         # Clean the string (strip spaces/quotes often copied from dashboards)
         v = v.strip().replace('"', '').replace("'", "")
         
-        # Masked logging for debugging
+        # Masked logging for debuggzooming
         try:
             parts = v.split("@")
             host_part = parts[-1] if len(parts) > 1 else "Unknown"
