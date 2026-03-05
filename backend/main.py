@@ -66,3 +66,17 @@ if __name__ == "__main__":
         port=port,
         reload=False if os.environ.get("PORT") else True
     )
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://localhost:5500",
+    "https://luminous-bubblegum-b8387d.netlify.app"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
