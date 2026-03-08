@@ -30,7 +30,7 @@ function initializeGlobalAPI() {
   window.MS_API = {
     // Config
     baseUrl: window.MS_CONFIG.baseUrl,
-    
+
     // Auth
     getToken: window.MS_AUTH.getToken,
     setToken: window.MS_AUTH.setToken,
@@ -41,13 +41,13 @@ function initializeGlobalAPI() {
     changePassword: window.MS_AUTH.changePassword,
     deleteAccount: window.MS_AUTH.deleteAccount,
     loadCourseNav: window.MS_AUTH.loadCourseNav,
-    
+
     // Quiz
     getQuizzesAll: window.MS_QUIZ.getQuizzesAll,
     getQuizWithQuestions: window.MS_QUIZ.getQuizWithQuestions,
     submitQuiz: window.MS_QUIZ.submitQuiz,
     loadAndDisplayQuizzes: window.MS_QUIZ.loadAndDisplayQuizzes,
-    
+
     // Notes
     getNotes: window.MS_NOTES.getNotes,
     createNote: window.MS_NOTES.createNote,
@@ -55,7 +55,7 @@ function initializeGlobalAPI() {
     toggleStar: window.MS_NOTES.toggleStar,
     deleteNote: window.MS_NOTES.deleteNote,
     loadAndRenderNotes: window.MS_NOTES.loadAndRenderNotes,
-    
+
     // Progress
     getProgress: window.MS_PROGRESS.getProgress,
     getUserStats: window.MS_PROGRESS.getUserStats
@@ -66,7 +66,7 @@ function initializeGlobalAPI() {
 document.addEventListener('DOMContentLoaded', () => {
   attachAuthHandlers();
   window.MS_AUTH.loadCourseNav();
-  if (window.location.pathname.includes('my_notes.html')) {
+  if (window.location.pathname.includes('my_notes')) {
     window.MS_NOTES.attachNotesPageHandlers();
     window.MS_NOTES.loadAndRenderNotes();
   }
