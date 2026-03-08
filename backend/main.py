@@ -68,10 +68,7 @@ if __name__ == "__main__":
     )
 from fastapi.middleware.cors import CORSMiddleware
 
-origins = [
-    "http://localhost:5500",
-    "https://luminous-bubblegum-b8387d.netlify.app"
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
