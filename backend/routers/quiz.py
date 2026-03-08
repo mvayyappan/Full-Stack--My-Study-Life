@@ -91,9 +91,19 @@ def get_quiz_with_questions(quiz_id: int, db: Session = Depends(get_db)):
 
 @router.post("/add-question")
 def add_question(question: QuestionCreate, db: Session = Depends(get_db)):
-    """Add question to a quiz"""
+    """Add question to a quiz and increment total_questions"""
+    # 1. Add question
     db_question = Question(**question.dict())
     db.add(db_question)
+    
+    # 2. Increment quiz total_questions
+    quiz = db.query(Quiz).filter(Quiz.id == question.quiz_id).first()
+    if quiz:
+        if quiz.total_questions is None:
+            quiz.total_questions = 0
+        quiz.total_questions += 1
+        db.add(quiz)
+    
     db.commit()
     db.refresh(db_question)
     return db_question
