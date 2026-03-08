@@ -161,3 +161,17 @@ def submit_quiz(
         "total": total,
         "message": f"Quiz submitted! Score: {score_percentage:.2f}%"
     }
+
+@router.delete("/{quiz_id}")
+def delete_quiz(quiz_id: int, db: Session = Depends(get_db)):
+    """Delete a quiz and its questions"""
+    quiz = db.query(Quiz).filter(Quiz.id == quiz_id).first()
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Quiz not found")
+    
+    # Delete associated questions first
+    db.query(Question).filter(Question.quiz_id == quiz_id).delete()
+    
+    db.delete(quiz)
+    db.commit()
+    return {"message": "Quiz deleted successfully"}
