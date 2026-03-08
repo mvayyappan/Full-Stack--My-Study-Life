@@ -11,7 +11,7 @@ import asyncio
 import httpx
 from itertools import product
 
-API_BASE = "http://127.0.0.1:8000/api"
+API_BASE = "https://full-stack-my-study-life-1.onrender.com/api"
 
 GRADES = [6, 7, 8, 9, 10]
 SUBJECTS = ["Tamil", "English", "Maths", "Science", "SS"]
@@ -29,14 +29,15 @@ async def get_token(client: httpx.AsyncClient) -> str | None:
         await client.post(f"{API_BASE}/auth/signup", json={
             "email": ADMIN_EMAIL,
             "password": ADMIN_PASSWORD,
-            "full_name": "Admin Seeder"
+            "full_name": "Admin Seeder",
+            "course": "General"
         }, timeout=10.0)
     except Exception:
         pass
 
     # Login
-    r = await client.post(f"{API_BASE}/auth/login", params={
-        "email": ADMIN_EMAIL,
+    r = await client.post(f"{API_BASE}/auth/login", data={
+        "username": ADMIN_EMAIL,
         "password": ADMIN_PASSWORD
     }, timeout=10.0)
 
