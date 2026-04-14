@@ -1,43 +1,17 @@
-// Progress API functions
 async function getProgress() {
-  const token = window.MS_AUTH.getToken();
-  if (!token) return { success: false, data: [] };
-  try {
-    const res = await fetch(`${window.MS_CONFIG.baseUrl}/api/progress/`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    });
-    if (!res.ok) return { success: false, data: [] };
-    const data = await res.json();
-    return { success: true, data: data };
-  } catch (err) {
-    console.error('Error fetching progress:', err);
+  const result = await window.API_HELPER.apiGet("/api/progress/", true);
+  if (!result.success) {
+    console.error("Error fetching progress:", result.error);
     return { success: false, data: [] };
   }
+  return { success: true, data: result.data };
 }
-
 async function getUserStats() {
-  const token = window.MS_AUTH.getToken();
-  if (!token) return { success: false, data: null };
-  try {
-    const res = await fetch(`${window.MS_CONFIG.baseUrl}/api/progress/stats`, {
-      method: 'GET',
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-    if (!res.ok) return { success: false, data: null };
-    const data = await res.json();
-    return { success: true, data: data };
-  } catch (err) {
-    console.error('Error fetching stats:', err);
+  const result = await window.API_HELPER.apiGet("/api/progress/stats", true);
+  if (!result.success) {
+    console.error("Error fetching stats:", result.error);
     return { success: false, data: null };
   }
+  return { success: true, data: result.data };
 }
-
-// Export progress functions
-window.MS_PROGRESS = {
-  getProgress,
-  getUserStats
-};
+window.MS_PROGRESS = { getProgress, getUserStats };

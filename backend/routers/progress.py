@@ -1,60 +1,34 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Header
-from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from database import get_db
 from models.progress import Progress
 from models.user import User
 from schemas.progress import ProgressResponse
-from utils.security import decode_token
+from utils.security import get_current_user_dependency
 
 router = APIRouter(
     prefix="/api/progress",
     tags=["Progress"]
 )
 
-def get_current_user_id(authorization: str, db: Session):
-    """Get current user ID from Authorization header"""
-    if not authorization:
-        return None
-    
-    parts = authorization.split()
-    token = parts[-1]
-    
-    email = decode_token(token)
-    if not email:
-        return None
-    
-    user = db.query(User).filter(User.email == email).first()
-    if not user:
-        return None
-    return user.id
-
 @router.get("/user", response_model=list[ProgressResponse])
 def get_user_progress(
-    authorization: Optional[str] = Header(None), 
+    current_user: User = Depends(get_current_user_dependency),
     db: Session = Depends(get_db)
 ):
     """Get all quiz results for current user"""
-    user_id = get_current_user_id(authorization, db)
-    if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid or missing token")
-    
-    progress_list = db.query(Progress).filter(Progress.user_id == user_id).all()
+    progress_list = db.query(Progress).filter(Progress.user_id == current_user.id).all()
     return progress_list
 
 @router.get("/quiz/{quiz_id}")
 def get_quiz_result(
-    quiz_id: int, 
-    authorization: Optional[str] = Header(None), 
+    quiz_id: int,
+    current_user: User = Depends(get_current_user_dependency),
     db: Session = Depends(get_db)
 ):
     """Get result for specific quiz taken by user"""
-    user_id = get_current_user_id(authorization, db)
-    if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid or missing token")
-    
     progress = db.query(Progress).filter(
-        Progress.user_id == user_id,
+        Progress.user_id == current_user.id,
         Progress.quiz_id == quiz_id
     ).first()
     
@@ -68,15 +42,11 @@ def get_quiz_result(
 
 @router.get("/stats")
 def get_user_stats(
-    authorization: Optional[str] = Header(None), 
+    current_user: User = Depends(get_current_user_dependency),
     db: Session = Depends(get_db)
 ):
     """Get user statistics"""
-    user_id = get_current_user_id(authorization, db)
-    if not user_id:
-        raise HTTPException(status_code=401, detail="Invalid or missing token")
-    
-    progress_list = db.query(Progress).filter(Progress.user_id == user_id).all()
+    progress_list = db.query(Progress).filter(Progress.user_id == current_user.id).all()
     
     if not progress_list:
         return {
