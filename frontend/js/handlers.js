@@ -1,35 +1,28 @@
 function showError(msg) {
-  const el = document.getElementById("errorMsg");
+  let el = document.getElementById("errorMsg");
   if (!el) return;
   el.style.display = "block";
   el.textContent = msg;
 }
+
 function attachAuthHandlers() {
-  const loginForm = document.getElementById("loginForm");
-  if (loginForm)
-    loginForm.addEventListener(
-      "submit",
-      window.MS_AUTH.handleLogin || handleLogin,
-    );
-  const signupForm = document.getElementById("signupForm");
-  if (signupForm)
-    signupForm.addEventListener(
-      "submit",
-      window.MS_AUTH.handleSignup || handleSignup,
-    );
-  const logoutLinks = document.querySelectorAll(
-    'a[href*="logout"],.logout-btn',
-  );
-  logoutLinks.forEach((a) =>
-    a.addEventListener("click", (e) => {
-      window.MS_AUTH.clearToken();
-    }),
-  );
+  let loginForm = document.getElementById("loginForm");
+  if (loginForm) loginForm.addEventListener("submit", window.MS_AUTH.handleLogin || handleLogin);
+  
+  let signupForm = document.getElementById("signupForm");
+  if (signupForm) signupForm.addEventListener("submit", window.MS_AUTH.handleSignup || handleSignup);
+  
+  let logoutLinks = document.querySelectorAll('a[href*="logout"],.logout-btn');
+  logoutLinks.forEach(link => {
+    link.addEventListener("click", () => window.MS_AUTH.clearToken());
+  });
+  
   if (window.location.pathname.includes("logout.html")) {
     window.MS_AUTH.clearToken();
-    setTimeout(() => (window.location.href = "../../index.html"), 800);
+    setTimeout(() => window.location.href = "../../index.html", 800);
   }
 }
+
 function initializeGlobalAPI() {
   window.MS_API = {
     baseUrl: window.MS_CONFIG.baseUrl,
@@ -56,13 +49,17 @@ function initializeGlobalAPI() {
     getUserStats: window.MS_PROGRESS.getUserStats,
   };
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   attachAuthHandlers();
   window.MS_AUTH.loadCourseNav();
+  
   if (window.location.pathname.includes("my_notes")) {
     window.MS_NOTES.attachNotesPageHandlers();
     window.MS_NOTES.loadAndRenderNotes();
   }
+  
   initializeGlobalAPI();
 });
+
 window.MS_HANDLERS = { showError, attachAuthHandlers, initializeGlobalAPI };
