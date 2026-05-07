@@ -1,0 +1,167 @@
+================================================================================
+                    SCHEMAS/ FOLDER - KEYWORDS + CONCEPTS
+================================================================================
+
+Search these keywords on Google to learn the concepts used in schemas/.
+
+================================================================================
+PYDANTIC BASICS
+================================================================================
+
+1. Pydantic
+2. BaseModel
+3. data validation
+4. type hints
+5. type checking
+
+================================================================================
+PYDANTIC VALIDATION
+================================================================================
+
+6. EmailStr
+7. email validation
+8. Optional types
+9. default values
+10. field validators
+
+================================================================================
+SCHEMA PATTERNS
+================================================================================
+
+11. Base schema
+12. Create schema
+13. Response schema
+14. Update schema
+15. separation of concerns
+
+================================================================================
+PYTHON TYPES
+================================================================================
+
+16. str (string)
+17. int (integer)
+18. float (float number)
+19. bool (boolean)
+20. dict (dictionary)
+21. List
+22. Optional
+
+================================================================================
+DATETIME
+================================================================================
+
+23. datetime
+24. created_at
+25. updated_at
+26. timestamp
+
+================================================================================
+FASTAPI INTEGRATION
+================================================================================
+
+27. request body
+28. response model
+29. from_attributes = True
+30. Config class
+
+================================================================================
+USER SCHEMAS
+================================================================================
+
+31. UserBase
+32. UserCreate
+33. UserResponse
+34. Token
+35. TokenData
+36. access_token
+37. token_type
+
+================================================================================
+NOTE SCHEMAS
+================================================================================
+
+38. NoteBase
+39. NoteCreate
+40. NoteUpdate
+41. color field
+42. is_starred
+43. timestamps
+
+================================================================================
+QUIZ SCHEMAS
+================================================================================
+
+44. QuizBase
+45. QuizCreate
+46. QuizResponse
+47. QuestionBase
+48. QuestionCreate
+49. QuestionResponse
+50. QuizWithQuestions
+51. quiz_id
+52. subject
+53. grade
+54. total_questions
+
+================================================================================
+PROGRESS SCHEMAS
+================================================================================
+
+55. ProgressResponse
+56. QuizSubmission
+57. correct_answers
+58. wrong_answers
+59. score
+60. answers dict
+
+================================================================================
+
+SCHEMAS/ CONCEPTS EXPLAINED
+================================================================================
+
+A. What are Schemas?
+- Data validation and serialization classes
+- Define what data frontend sends (request) and backend returns (response)
+- Prevent invalid data from entering your API
+
+B. Pydantic BaseModel
+- Automatic type validation
+- Auto-generates JSON Schema for API docs
+- Converts data types automatically (e.g., "123" → 123)
+
+C. Base vs Create vs Response
+- Base: Common fields shared by multiple schemas
+- Create: What frontend sends when creating (no id, no timestamps)
+- Response: What backend sends back (includes id, timestamps)
+- This prevents exposing unwanted fields like hashed passwords
+
+D. EmailStr Validation
+- Automatically validates email format
+- Rejects invalid emails before reaching endpoint
+- Example: "user@example.com" ✅ | "notanemail" ❌
+
+E. Optional and Default Values
+- Optional[str] = None means field can be null
+- color: str = "#fff7b1" means default color is yellow
+- Useful for optional request parameters
+
+F. from_attributes = True
+- Tells Pydantic to read data from ORM models
+- Converts SQLAlchemy User object → JSON response
+- Works with db.query() results
+
+G. Schema Hierarchy
+- Parent schemas share common fields
+- Child schemas add specific fields
+- Example: QuizWithQuestions extends QuizResponse + adds questions list
+
+H. Request vs Response
+- Request: What user sends (CreateSchema)
+- Response: What API returns (ResponseSchema)
+- Keeps frontend safe from internal fields
+
+================================================================================
+
+Total keywords: 60
+
+Use these to research each concept and understand how schemas work.

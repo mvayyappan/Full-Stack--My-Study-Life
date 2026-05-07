@@ -1,0 +1,112 @@
+================================================================================
+                    SECURITY.PY - KEYWORDS + CONCEPTS
+================================================================================
+
+Search these keywords on Google to learn the concepts used in security.py.
+
+================================================================================
+PASSWORD HASHING
+================================================================================
+
+1. passlib
+2. CryptContext
+3. bcrypt
+4. hash_password
+5. verify_password
+
+================================================================================
+JWT TOKENS
+================================================================================
+
+6. JWT (JSON Web Token)
+7. jose library
+8. create_access_token
+9. decode_token
+10. SECRET_KEY
+11. ALGORITHM
+12. HS256
+13. exp claim
+14. sub claim
+
+================================================================================
+AUTHENTICATION
+================================================================================
+
+15. authentication
+16. authorization header
+17. Bearer token
+18. extract_token
+19. get_user_by_token
+20. get_current_user
+
+================================================================================
+FASTAPI DEPENDENCIES
+================================================================================
+
+21. Depends
+22. dependency injection
+23. get_current_user_dependency
+24. Header
+25. HTTPException
+26. status codes
+
+================================================================================
+DATABASE & MODELS
+================================================================================
+
+27. Session
+28. SQLAlchemy
+29. User model
+30. db.query()
+
+================================================================================
+PYTHON CONCEPTS
+================================================================================
+
+31. Optional
+32. datetime
+33. timedelta
+34. try except
+35. function definition
+
+================================================================================
+
+SECURITY.PY CONCEPTS EXPLAINED
+================================================================================
+
+A. Password Hashing with bcrypt
+- Uses passlib's CryptContext to hash passwords securely.
+- bcrypt is a slow hashing algorithm that prevents brute-force attacks.
+- Never store plain text passwords - always hash them!
+
+B. JWT (JSON Web Tokens)
+- Stateless authentication method.
+- Contains user data (like email) signed with a secret key.
+- Expires after a set time (30 minutes in your app).
+- Used for API authentication without sessions.
+
+C. Authorization Header
+- HTTP header that carries the JWT token.
+- Format: "Authorization: Bearer <token>"
+- Frontend sends this with every authenticated request.
+
+D. FastAPI Dependencies
+- Functions that run before your endpoint code.
+- get_current_user_dependency automatically gets the logged-in user.
+- Raises 401 error if token is invalid or missing.
+
+E. Token Flow
+- User logs in → Server creates JWT → Returns to frontend
+- Frontend stores token → Sends in Authorization header
+- Server decodes token → Gets user email → Fetches user from DB
+
+F. Security Best Practices
+- SECRET_KEY should be long and random (change in production).
+- Tokens expire to prevent stolen tokens from being used forever.
+- Use HTTPS in production to encrypt token transmission.
+
+================================================================================
+
+Total keywords: 35
+
+Use these to research each concept and understand how security.py works.

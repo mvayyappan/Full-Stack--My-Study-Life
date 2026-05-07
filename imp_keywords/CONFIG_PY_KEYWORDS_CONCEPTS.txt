@@ -1,0 +1,97 @@
+================================================================================
+                    CONFIG.PY - KEYWORDS + CONCEPTS
+================================================================================
+
+Search these keywords on Google to learn the concepts used in config.py.
+
+================================================================================
+SETTINGS & CONFIGURATION
+================================================================================
+
+1. Pydantic BaseSettings
+2. environment variables
+3. .env file
+4. Settings class
+
+================================================================================
+DATABASE URL HANDLING
+================================================================================
+
+5. DATABASE_URL
+6. os.getenv()
+7. postgres:// vs postgresql://
+8. psycopg2 driver
+9. connection string
+
+================================================================================
+VALIDATION & CLEANUP
+================================================================================
+
+10. field_validator
+11. @classmethod
+12. mode="before"
+13. string strip()
+14. error handling
+
+================================================================================
+JWT & AUTHENTICATION
+================================================================================
+
+15. SECRET_KEY
+16. ALGORITHM
+17. HS256
+18. ACCESS_TOKEN_EXPIRE_MINUTES
+
+================================================================================
+APPLICATION METADATA
+================================================================================
+
+19. APP_NAME
+20. APP_VERSION
+21. API versioning
+
+================================================================================
+PYTHON CONCEPTS
+================================================================================
+
+22. import statements
+23. class definition
+24. function definition
+25. return statement
+
+================================================================================
+
+CONFIG.PY CONCEPTS EXPLAINED
+================================================================================
+
+A. BaseSettings from Pydantic
+- Use to load settings from environment variables and .env files.
+- Great for simple configuration management in Python.
+
+B. Environment Variables
+- Keep secrets and deployment settings out of source code.
+- Use os.getenv() to read values safely.
+
+C. DATABASE_URL Fixing
+- Convert old "postgres://" URLs to "postgresql://".
+- Append "+psycopg2" so SQLAlchemy uses the correct DB driver.
+- Strip quotes and spaces that may appear when copying from dashboards.
+
+D. Field Validator
+- Runs before the setting value is parsed.
+- Helps normalize and validate configuration input.
+
+E. JWT Configuration
+- SECRET_KEY signs tokens securely.
+- ALGORITHM defines the JWT hashing method.
+- ACCESS_TOKEN_EXPIRE_MINUTES controls token lifetime.
+
+F. App Metadata
+- APP_NAME and APP_VERSION let the app identify itself.
+- Used in docs, logs, and version checks.
+
+================================================================================
+
+Total keywords: 25
+
+Use these to research each concept and understand how config.py works.

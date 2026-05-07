@@ -1,0 +1,217 @@
+================================================================================
+                    PROGRESS.PY - KEYWORDS + CONCEPTS
+================================================================================
+
+Search these keywords on Google to learn the concepts used in progress.py.
+
+================================================================================
+FASTAPI ROUTING
+================================================================================
+
+1. APIRouter
+2. router prefix
+3. tags
+4. @router.get()
+5. response_model
+
+================================================================================
+REQUEST/RESPONSE MODELS
+================================================================================
+
+6. ProgressResponse
+7. response_model
+8. list[ProgressResponse]
+
+================================================================================
+DATABASE OPERATIONS
+================================================================================
+
+9. db.query()
+10. .filter()
+11. .all()
+12. .first()
+13. Progress model
+14. User model
+
+================================================================================
+DEPENDENCIES
+================================================================================
+
+15. Depends()
+16. get_db
+17. get_current_user_dependency
+18. current_user
+
+================================================================================
+ENDPOINTS - GET USER PROGRESS
+================================================================================
+
+19. GET /api/progress/user
+20. all quiz results
+21. current user only
+22. filter by user_id
+23. ProgressResponse list
+
+================================================================================
+ENDPOINTS - GET SPECIFIC QUIZ RESULT
+================================================================================
+
+24. GET /api/progress/quiz/{quiz_id}
+25. specific quiz result
+26. current user
+27. filter by user_id and quiz_id
+28. single result
+
+================================================================================
+ENDPOINTS - GET USER STATISTICS
+================================================================================
+
+29. GET /api/progress/stats
+30. aggregate statistics
+31. user statistics
+
+================================================================================
+STATISTICS CALCULATION
+================================================================================
+
+32. total_quizzes (count of attempts)
+33. average_score (sum / count)
+34. accuracy (correct / total * 100)
+35. current_streak (consecutive attempts)
+36. total_questions
+37. correct_answers
+38. study_hours (estimate)
+
+================================================================================
+CALCULATION FUNCTIONS
+================================================================================
+
+39. sum() function
+40. len() function
+41. round() function
+42. max() function
+43. sorted() function
+44. lambda function
+
+================================================================================
+ERROR HANDLING
+================================================================================
+
+45. HTTPException
+46. HTTP_404_NOT_FOUND
+47. "Quiz result not found" detail
+
+================================================================================
+DATA AGGREGATION
+================================================================================
+
+48. list comprehension
+49. sum with generator
+50. average calculation
+51. percentage calculation
+
+================================================================================
+PYTHON CONCEPTS
+================================================================================
+
+52. if not progress_list
+53. for p in progress_list
+54. dictionary return
+55. lambda p: p.completed_at
+56. sorted(progress_list, reverse=True)
+57. key=lambda (sorting)
+
+================================================================================
+RESPONSE DATA
+================================================================================
+
+58. total_quizzes
+59. average_score
+60. accuracy
+61. current_streak
+62. total_questions
+63. correct_answers
+64. study_hours
+
+================================================================================
+DEFAULT VALUES
+================================================================================
+
+65. return default stats (zeros)
+66. return empty progress list
+67. empty statistics dictionary
+
+================================================================================
+SORTING & ORDERING
+================================================================================
+
+68. sort by completed_at
+69. reverse=True (newest first)
+70. lambda p: p.completed_at
+
+================================================================================
+
+PROGRESS.PY CONCEPTS EXPLAINED
+================================================================================
+
+A. What is Progress?
+- Tracks user quiz attempts and scores
+- Records each quiz taken
+- Stores: correct answers, wrong answers, score
+- Used to show user stats and history
+
+B. Get User Progress
+- Returns all quiz attempts by current user
+- Shows: which quizzes taken, when, score
+- Useful for: quiz history, review old attempts
+
+C. Get Specific Quiz Result
+- Get single result from one quiz
+- Verify: current user took this quiz
+- Return 404 if not found or not owner
+- Useful for: detailed review of one quiz
+
+D. Get User Statistics
+1. Aggregate all quiz attempts
+2. Calculate: total quizzes, average score, accuracy
+3. Estimate: study hours (rough: 1 hour per 50 questions)
+4. Streak: number of quiz attempts (simplified)
+5. Return dictionary with all stats
+
+E. Statistics Formulas
+- average_score = sum of all scores / number of quizzes
+- accuracy = (total_correct / total_questions) * 100
+- study_hours = total_questions // 50 (minimum 1)
+- current_streak = simplified to quiz count
+
+F. Empty Case Handling
+- If no progress records: return all zeros
+- Prevents errors on new user accounts
+- Graceful fallback for no data
+
+G. Data Aggregation with sum()
+- total_correct = sum(p.correct_answers for p in progress_list)
+- total_questions = sum(p.total_questions for p in progress_list)
+- Combines multiple rows into single values
+
+H. Sorting and Ordering
+- sorted(progress_list, key=lambda p: p.completed_at, reverse=True)
+- reverse=True = newest first
+- Used for displaying recent attempts first
+
+I. Rounding Results
+- round(average_score, 2) = 2 decimal places
+- round(accuracy, 2) = 85.50%
+- Makes numbers more readable
+
+J. Response Format
+- Returns dictionary, not model
+- Custom response structure
+- Combines data from Progress table
+- Shows overall user performance
+
+================================================================================
+
+Total keywords: 70
+
+Use these to research each concept and understand how progress.py works.

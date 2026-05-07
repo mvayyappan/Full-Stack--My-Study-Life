@@ -1,0 +1,229 @@
+================================================================================
+                    NOTES.PY - KEYWORDS + CONCEPTS
+================================================================================
+
+Search these keywords on Google to learn the concepts used in notes.py.
+
+================================================================================
+FASTAPI ROUTING
+================================================================================
+
+1. APIRouter
+2. router prefix
+3. tags
+4. @router.post()
+5. @router.get()
+6. @router.put()
+7. @router.delete()
+8. @router.patch()
+9. response_model
+
+================================================================================
+CRUD OPERATIONS
+================================================================================
+
+10. CREATE (POST)
+11. READ (GET)
+12. UPDATE (PUT/PATCH)
+13. DELETE (DELETE)
+14. CRUD pattern
+
+================================================================================
+REQUEST/RESPONSE MODELS
+================================================================================
+
+15. NoteCreate
+16. NoteUpdate
+17. Note (response model)
+18. response_model
+19. list[NoteSchema]
+
+================================================================================
+DATABASE OPERATIONS
+================================================================================
+
+20. db.query()
+21. .filter()
+22. .all()
+23. .first()
+24. db.add()
+25. db.commit()
+26. db.refresh()
+27. db.delete()
+
+================================================================================
+DEPENDENCIES
+================================================================================
+
+28. Depends()
+29. get_db
+30. get_current_user_dependency
+31. current_user
+
+================================================================================
+OWNERSHIP VALIDATION
+================================================================================
+
+32. user_id check
+33. current_user.id
+34. filter by user_id and note_id
+35. ownership verification
+
+================================================================================
+ENDPOINTS - CREATE NOTE
+================================================================================
+
+36. POST /api/notes/
+37. NoteCreate request
+38. user_id = current_user.id
+39. title, description, color
+40. return created note
+
+================================================================================
+ENDPOINTS - GET ALL NOTES
+================================================================================
+
+41. GET /api/notes/
+42. get user's notes only
+43. filter by user_id
+44. return list of notes
+
+================================================================================
+ENDPOINTS - GET SINGLE NOTE
+================================================================================
+
+45. GET /api/notes/{note_id}
+46. verify ownership
+47. filter by id and user_id
+48. return single note
+
+================================================================================
+ENDPOINTS - UPDATE NOTE
+================================================================================
+
+49. PUT /api/notes/{note_id}
+50. NoteUpdate request
+51. dict(exclude_unset=True)
+52. setattr() update
+53. verify ownership
+54. update fields
+
+================================================================================
+ENDPOINTS - DELETE NOTE
+================================================================================
+
+55. DELETE /api/notes/{note_id}
+56. verify ownership
+57. db.delete()
+58. return success message
+
+================================================================================
+ENDPOINTS - TOGGLE STAR
+================================================================================
+
+59. PATCH /api/notes/{note_id}/star
+60. toggle is_starred
+61. not db_note.is_starred
+62. return updated note
+
+================================================================================
+NOTE FIELDS
+================================================================================
+
+63. title
+64. description
+65. color (hex code)
+66. is_starred (boolean)
+67. created_at (timestamp)
+68. updated_at (timestamp)
+
+================================================================================
+ERROR HANDLING
+================================================================================
+
+69. HTTPException
+70. HTTP_404_NOT_FOUND
+71. "Note not found" detail
+72. ownership check error
+
+================================================================================
+PYTHON CONCEPTS
+================================================================================
+
+73. exclude_unset=True
+74. setattr()
+75. for key, value in dict.items()
+76. boolean toggle (not value)
+77. optional updates
+
+================================================================================
+
+NOTES.PY CONCEPTS EXPLAINED
+================================================================================
+
+A. Note CRUD Pattern
+- CREATE: POST /api/notes/ → New note
+- READ: GET /api/notes/ → All user notes
+- READ: GET /api/notes/{id} → Single note
+- UPDATE: PUT /api/notes/{id} → Edit note
+- DELETE: DELETE /api/notes/{id} → Remove note
+- PATCH: /star → Toggle star (partial update)
+
+B. User Isolation
+- Each user sees only their own notes
+- Filter by: Note.user_id == current_user.id
+- Prevents viewing other users' notes
+- Ownership check on every operation
+
+C. Create Note
+- User sends: title, description, color
+- Server adds: user_id (from token), timestamps
+- Color defaults to "#fff7b1" (yellow) if not provided
+- Returns created note with id and timestamps
+
+D. Get All Notes
+- Query all notes for current user
+- Filter: Note.user_id == current_user.id
+- Return: List of all user's notes
+- Empty list if user has no notes
+
+E. Get Single Note
+- Verify note exists AND belongs to user
+- Two conditions: id match AND user_id match
+- Return 404 if not found or not owner
+
+F. Update Note
+- Only update fields that are provided
+- exclude_unset=True = skip unchanged fields
+- Example: Update only color, leave title unchanged
+- setattr() = dynamic field update
+
+G. Delete Note
+- Verify ownership first
+- Delete from database
+- Return success message
+- Note is permanently removed
+
+H. Toggle Star
+- PATCH method for partial update
+- Toggle is_starred: True ↔ False
+- Use: not db_note.is_starred
+- Quick favorite/unfavorite functionality
+
+I. Color Storage
+- Color stored as hex code: "#fff7b1"
+- Can be any CSS color format
+- Color persists across sessions
+- Updated via PUT endpoint
+
+J. Timestamps
+- created_at: When note was created (never changes)
+- updated_at: When note was last modified
+- Both set automatically by database
+- Useful for sorting and filtering
+
+================================================================================
+
+Total keywords: 77
+
+Use these to research each concept and understand how notes.py works.

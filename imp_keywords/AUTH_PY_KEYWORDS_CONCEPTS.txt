@@ -1,0 +1,220 @@
+================================================================================
+                    AUTH.PY - KEYWORDS + CONCEPTS
+================================================================================
+
+Search these keywords on Google to learn the concepts used in auth.py.
+
+================================================================================
+FASTAPI ROUTING
+================================================================================
+
+1. APIRouter
+2. router prefix
+3. tags
+4. @router.post()
+5. @router.get()
+6. @router.put()
+7. @router.delete()
+
+================================================================================
+REQUEST & RESPONSE MODELS
+================================================================================
+
+8. response_model
+9. BaseModel
+10. request body
+11. UpdateProfileRequest
+12. ChangePasswordRequest
+13. MessageResponse
+
+================================================================================
+HTTP SECURITY
+================================================================================
+
+14. OAuth2PasswordRequestForm
+15. username/password flow
+16. form_data
+17. form submission
+
+================================================================================
+DEPENDENCIES
+================================================================================
+
+18. Depends()
+19. get_db dependency
+20. get_current_user_dependency
+21. automatic dependency injection
+
+================================================================================
+DATABASE OPERATIONS (CRUD)
+================================================================================
+
+22. db.query()
+23. .filter()
+24. .first()
+25. db.add()
+26. db.commit()
+27. db.refresh()
+28. db.delete()
+
+================================================================================
+ERROR HANDLING
+================================================================================
+
+29. HTTPException
+30. status codes (400, 401, 404)
+31. HTTP_400_BAD_REQUEST
+32. HTTP_401_UNAUTHORIZED
+33. error detail messages
+
+================================================================================
+PASSWORD SECURITY
+================================================================================
+
+34. hash_password()
+35. verify_password()
+36. hashed_password
+37. password comparison
+
+================================================================================
+JWT AUTHENTICATION
+================================================================================
+
+38. create_access_token()
+39. data={"sub": user.email}
+40. token_type: "bearer"
+41. Token response
+
+================================================================================
+ENDPOINTS - SIGNUP
+================================================================================
+
+42. POST /api/auth/signup
+43. User registration
+44. check if email exists
+45. create new user
+46. return UserResponse
+
+================================================================================
+ENDPOINTS - LOGIN
+================================================================================
+
+47. POST /api/auth/login
+48. form_data.username (email)
+49. form_data.password
+50. verify credentials
+51. return access_token
+
+================================================================================
+ENDPOINTS - GET CURRENT USER
+================================================================================
+
+52. GET /api/auth/me
+53. get current logged-in user
+54. requires authentication
+
+================================================================================
+ENDPOINTS - UPDATE PROFILE
+================================================================================
+
+55. PUT /api/auth/update-profile
+56. update full_name
+57. update course
+58. refresh user data
+
+================================================================================
+ENDPOINTS - CHANGE PASSWORD
+================================================================================
+
+59. POST /api/auth/change-password
+60. verify current password
+61. hash new password
+62. update database
+
+================================================================================
+ENDPOINTS - DELETE ACCOUNT
+================================================================================
+
+63. DELETE /api/auth/delete-account
+64. remove user from database
+65. delete all user data
+
+================================================================================
+PYTHON CONCEPTS
+================================================================================
+
+66. Optional
+67. getattr()
+68. isinstance()
+69. type hints
+70. class definitions
+
+================================================================================
+
+AUTH.PY CONCEPTS EXPLAINED
+================================================================================
+
+A. APIRouter
+- Groups related endpoints together
+- prefix="/api/auth" adds to all routes
+- tags=["Authentication"] for documentation
+
+B. Signup Process
+1. Check if email already registered
+2. Hash password with bcrypt
+3. Create User object
+4. Save to database
+5. Return user data (without password!)
+
+C. Login Process
+1. Get email and password from form
+2. Find user by email
+3. Verify password matches hashed version
+4. Create JWT token with email
+5. Return token and token_type
+
+D. OAuth2PasswordRequestForm
+- Standard HTML form submission
+- form_data.username = email
+- form_data.password = password
+- Browser sends as form data, not JSON
+
+E. Authentication Flow
+- Login endpoint generates token
+- Frontend stores token
+- GET /me endpoint verifies token
+- Token sent in Authorization header
+
+F. Password Security
+- Never store plain text passwords
+- Always hash before saving
+- Use verify to compare on login
+- Update password by hashing new password
+
+G. Database Integrity
+- Check email doesn't already exist before signup
+- Verify password before changing it
+- Use db.refresh() to get updated data
+- Use db.delete() then db.commit() to remove
+
+H. Error Handling
+- 400: Email already registered (bad request)
+- 401: Invalid password (unauthorized)
+- 404: User not found (not found)
+- Return clear error messages
+
+I. Profile Updates
+- Only update fields that are provided
+- Optional fields allow partial updates
+- Use db.refresh() to return updated data
+
+J. Account Deletion
+- Removes user completely from database
+- All related data deleted (depends on cascade settings)
+- Return success message
+
+================================================================================
+
+Total keywords: 70
+
+Use these to research each concept and understand how auth.py works.

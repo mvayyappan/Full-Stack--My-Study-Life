@@ -1,0 +1,220 @@
+================================================================================
+                    QUIZ.PY - KEYWORDS + CONCEPTS
+================================================================================
+
+Search these keywords on Google to learn the concepts used in quiz.py.
+
+================================================================================
+FASTAPI ROUTING
+================================================================================
+
+1. APIRouter
+2. router prefix
+3. tags
+4. @router.post()
+5. @router.get()
+6. @router.delete()
+7. response_model
+
+================================================================================
+DATABASE MODELS
+================================================================================
+
+8. Quiz model
+9. Question model
+10. Progress model
+11. User model
+12. UserAnswer model
+
+================================================================================
+DATABASE OPERATIONS
+================================================================================
+
+13. db.query()
+14. .filter()
+15. .all()
+16. .first()
+17. .delete()
+18. db.add()
+19. db.commit()
+20. db.refresh()
+
+================================================================================
+SQLALCHEMY FUNCTIONS
+================================================================================
+
+21. func.count()
+22. sqlalchemy.func
+23. scalar()
+24. aggregate functions
+
+================================================================================
+DEPENDENCIES
+================================================================================
+
+25. Depends()
+26. get_db
+27. get_current_user_dependency
+28. Session
+
+================================================================================
+REQUEST/RESPONSE MODELS
+================================================================================
+
+29. QuizCreate
+30. QuizResponse
+31. QuestionCreate
+32. QuizWithQuestions
+33. QuizSubmission
+34. list[QuizResponse]
+
+================================================================================
+HTTP STATUS CODES
+================================================================================
+
+35. HTTP_404_NOT_FOUND
+36. HTTP_400_BAD_REQUEST
+37. HTTPException
+38. status.HTTP_*
+
+================================================================================
+ENDPOINTS - CREATE QUIZ
+================================================================================
+
+39. POST /api/quiz/create
+40. admin only
+41. QuizCreate request
+42. Quiz.dict()
+
+================================================================================
+ENDPOINTS - GET ALL QUIZZES
+================================================================================
+
+43. GET /api/quiz/all
+44. return list of quizzes
+45. actual question count
+46. count from questions table
+
+================================================================================
+ENDPOINTS - GET SPECIFIC QUIZ
+================================================================================
+
+47. GET /api/quiz/{quiz_id}
+48. QuizWithQuestions response
+49. include all questions
+50. filter by quiz_id
+
+================================================================================
+ENDPOINTS - ADD QUESTION
+================================================================================
+
+51. POST /api/quiz/add-question
+52. QuestionCreate request
+53. attach to quiz
+54. question_id, quiz_id, correct_answer
+
+================================================================================
+ENDPOINTS - SUBMIT QUIZ
+================================================================================
+
+55. POST /api/quiz/submit/{quiz_id}
+56. current user authentication
+57. QuizSubmission (answers dict)
+58. answers: {question_id: "a", ...}
+
+================================================================================
+SCORING & PROGRESS
+================================================================================
+
+59. correct_count
+60. wrong_count
+61. score_percentage
+62. calculate score
+63. (correct / total * 100)
+64. Progress model save
+65. UserAnswer model save
+
+================================================================================
+ENDPOINTS - DELETE QUIZ
+================================================================================
+
+66. DELETE /api/quiz/{quiz_id}
+67. delete cascade
+68. delete questions first
+69. then delete quiz
+
+================================================================================
+PYTHON CONCEPTS
+================================================================================
+
+70. dictionary unpacking (**quiz.dict())
+71. for loop (iterate questions)
+72. string conversion str()
+73. lower() case comparison
+74. f-strings
+75. type hints
+
+================================================================================
+
+QUIZ.PY CONCEPTS EXPLAINED
+================================================================================
+
+A. Quiz Management
+- Create quizzes with title, subject, grade, description
+- Store total_questions count
+- Get all quizzes or specific quiz
+- Delete quiz and all associated questions
+
+B. Question Handling
+- Add questions to quiz
+- Each question has 4 options (a, b, c, d)
+- Store correct_answer as letter (a, b, c, or d)
+- Questions linked to quiz via quiz_id
+
+C. Quiz Submission Process
+1. User submits answers as dictionary
+2. Dictionary format: {question_id: "a", question_id: "b", ...}
+3. Compare user answers with correct answers
+4. Count correct and wrong answers
+5. Calculate percentage score
+
+D. Scoring Calculation
+- score = (correct / total * 100)
+- Example: 5 correct out of 10 = 50%
+- Store as Float percentage (72.5, 85.0, etc)
+
+E. Answer Recording
+- Save each user answer to UserAnswer table
+- Store: user_id, quiz_id, question_id, user_answer, is_correct
+- Creates detailed record of what user answered
+
+F. Progress Recording
+- Save overall quiz result to Progress table
+- Store: user_id, quiz_id, total_questions, correct_answers, wrong_answers, score
+- User can see past quiz results
+
+G. Case-Insensitive Comparison
+- .lower() converts to lowercase before comparing
+- "A" == "a" after .lower()
+- Prevents incorrect marking due to case
+
+H. Database Count
+- func.count(Question.id) counts total questions
+- Quiz.total_questions field gets updated
+- Useful for quizzes with dynamic question count
+
+I. Dictionary in Request
+- QuizSubmission.answers is a dict
+- Format: {question_id_str: answer_letter}
+- Example: {"1": "a", "2": "b", "3": "c"}
+
+J. Cascade Delete
+- Delete questions before deleting quiz
+- Without this, foreign key errors occur
+- Maintains referential integrity
+
+================================================================================
+
+Total keywords: 75
+
+Use these to research each concept and understand how quiz.py works.

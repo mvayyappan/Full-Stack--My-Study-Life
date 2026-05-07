@@ -1,0 +1,214 @@
+================================================================================
+                    MODELS/ FOLDER - KEYWORDS + CONCEPTS
+================================================================================
+
+Search these keywords on Google to learn the concepts used in models/.
+
+================================================================================
+SQLALCHEMY BASICS
+================================================================================
+
+1. SQLAlchemy ORM
+2. Base class
+3. __tablename__
+4. Column
+5. Table definition
+
+================================================================================
+SQLALCHEMY DATA TYPES
+================================================================================
+
+6. Integer
+7. String
+8. Text
+9. DateTime
+10. Float
+11. Boolean
+
+================================================================================
+PRIMARY KEYS & INDEXING
+================================================================================
+
+12. primary_key=True
+13. index=True
+14. unique=True
+15. auto-increment
+16. database indexing
+
+================================================================================
+DEFAULT VALUES & CONSTRAINTS
+================================================================================
+
+17. default=datetime.utcnow
+18. default=None
+19. nullable=True
+20. onupdate
+21. constraints
+
+================================================================================
+FOREIGN KEYS
+================================================================================
+
+22. ForeignKey
+23. referential integrity
+24. "users.id"
+25. "quizzes.id"
+26. "questions.id"
+
+================================================================================
+RELATIONSHIPS
+================================================================================
+
+27. relationship()
+28. back_populates
+29. one-to-many
+30. many-to-one
+31. relationship lazy loading
+
+================================================================================
+USER MODEL KEYWORDS
+================================================================================
+
+32. User
+33. __tablename__ = "users"
+34. email (unique, indexed)
+35. hashed_password
+36. full_name
+37. course
+38. created_at
+
+================================================================================
+NOTE MODEL KEYWORDS
+================================================================================
+
+39. Note
+40. __tablename__ = "notes"
+41. user_id (ForeignKey)
+42. title
+43. description
+44. color (#fff7b1)
+45. is_starred
+46. updated_at
+
+================================================================================
+QUIZ MODEL KEYWORDS
+================================================================================
+
+47. Quiz
+48. __tablename__ = "quizzes"
+49. title
+50. subject
+51. grade
+52. description
+53. total_questions
+
+================================================================================
+QUESTION MODEL KEYWORDS
+================================================================================
+
+54. Question
+55. __tablename__ = "questions"
+56. quiz_id (ForeignKey)
+57. question_text
+58. option_a, option_b, option_c, option_d
+59. correct_answer
+
+================================================================================
+PROGRESS MODEL KEYWORDS
+================================================================================
+
+60. Progress
+61. __tablename__ = "progress"
+62. total_questions
+63. correct_answers
+64. wrong_answers
+65. score (Float percentage)
+
+================================================================================
+USER ANSWER MODEL KEYWORDS
+================================================================================
+
+66. UserAnswer
+67. __tablename__ = "user_answers"
+68. question_id (ForeignKey)
+69. user_answer (a, b, c, or d)
+70. is_correct (Boolean)
+
+================================================================================
+DATETIME & TIMESTAMPS
+================================================================================
+
+71. datetime module
+72. datetime.utcnow
+73. created_at
+74. updated_at
+75. completed_at
+
+================================================================================
+
+MODELS/ CONCEPTS EXPLAINED
+================================================================================
+
+A. What are Models?
+- Database table definitions written in Python
+- Each model class = one database table
+- Each attribute = one column in the table
+- SQLAlchemy handles table creation automatically
+
+B. Primary Key
+- Unique identifier for each row
+- Always index=True for performance
+- Auto-increment (1, 2, 3, 4...)
+- Foreign keys reference primary keys
+
+C. Columns (Data Types)
+- Integer: whole numbers (1, 2, 100)
+- String: text with length limit
+- Text: longer text without length limit
+- DateTime: dates and times
+- Float: decimal numbers (72.5, 3.14)
+- Boolean: true/false values
+
+D. Foreign Key & Relationships
+- ForeignKey links tables together
+- relationship() makes it easy to access related data
+- Example: user.notes → all notes for that user
+- back_populates maintains bidirectional link
+
+E. Indexing
+- index=True makes searches fast
+- Email and IDs are usually indexed
+- Slower inserts/updates, faster queries
+
+F. Default Values
+- default=datetime.utcnow → Auto-timestamp when created
+- default="#fff7b1" → Default yellow color
+- onupdate=datetime.utcnow → Auto-update timestamp on changes
+
+G. Unique Constraint
+- unique=True means value can't repeat
+- Email addresses must be unique (one user per email)
+- Prevents duplicate accounts
+
+H. Model Hierarchy
+User → (has many) Notes, Progress, UserAnswers
+Quiz → (has many) Questions, Progress, UserAnswers
+Question ← (belongs to) Quiz
+
+I. What Happens When You Save?
+- Python code: user = User(email="john@example.com", ...)
+- SQLAlchemy: INSERT INTO users (email, ...) VALUES (...)
+- PostgreSQL: Stores row in users table
+- Database: {"id": 1, "email": "john@example.com", ...}
+
+J. Accessing Related Data
+- user = db.query(User).first()
+- user.notes → All notes for this user (via relationship)
+- user.progress → All quiz progress for this user
+- No extra database queries needed!
+
+================================================================================
+
+Total keywords: 75
+
+Use these to research each concept and understand how models work.

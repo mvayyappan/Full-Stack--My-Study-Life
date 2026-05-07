@@ -120,14 +120,23 @@ function renderNotesToGrid(notesList) {
 }
 
 async function loadAndRenderNotes() {
+  console.log('Loading notes...');
   let res = await getNotes();
+  console.log('Notes response:', res);
   if (res.success) {
     allNotes = res.data;
+    console.log('Rendering notes:', allNotes);
     renderNotesToGrid(filterAndSortNotes());
+  } else {
+    console.error('Failed to load notes:', res.error);
   }
 }
 
 function attachNotesPageHandlers() {
+  // Ensure modals are closed on page load
+  document.getElementById('update-modal').style.display = 'none';
+  document.getElementById('note-view-modal').classList.remove('active');
+
   let saveBtn = document.getElementById('save-note-btn');
   if (saveBtn) {
     saveBtn.addEventListener('click', async () => {
@@ -181,6 +190,25 @@ function attachNotesPageHandlers() {
     });
   });
 
+  // Add click outside to close modals
+  let updateModal = document.getElementById('update-modal');
+  if (updateModal) {
+    updateModal.addEventListener('click', (e) => {
+      if (e.target === updateModal) {
+        updateModal.style.display = 'none';
+      }
+    });
+  }
+
+  let viewModal = document.getElementById('note-view-modal');
+  if (viewModal) {
+    viewModal.addEventListener('click', (e) => {
+      if (e.target === viewModal) {
+        closeNoteView();
+      }
+    });
+  }
+
   let grid = document.getElementById('notes-grid');
   if (grid) {
     grid.addEventListener('click', async (e) => {
@@ -219,10 +247,23 @@ function attachNotesPageHandlers() {
 
       let note = allNotes.find(n => n.id == noteId);
       if (note) {
-        document.getElementById('view-note-title').innerText = note.title;
-        document.getElementById('view-note-description').innerHTML = makeLinksClickable(note.description || '');
-        document.getElementById('note-view-color').style.backgroundColor = note.color || '#fff7b1';
-        document.getElementById('note-view-modal').classList.add('active');
+        let date = new Date(note.created_at).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        });
+        let titleEl = document.getElementById('view-note-title');
+        let descEl = document.getElementById('view-note-description');
+        let dateEl = document.getElementById('view-note-date');
+        let colorEl = document.getElementById('note-view-color');
+        
+        if (titleEl) titleEl.innerText = note.title;
+        if (descEl) descEl.innerHTML = makeLinksClickable(note.description || '');
+        if (dateEl) dateEl.innerText = date;
+        if (colorEl) colorEl.style.backgroundColor = note.color || '#fff7b1';
+        
+        let modal = document.getElementById('note-view-modal');
+        if (modal) modal.classList.add('active');
       }
     });
   }

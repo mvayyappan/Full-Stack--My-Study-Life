@@ -7,7 +7,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine
-from models import User, Quiz, Question, UserAnswer, Progress, Note
+from models import User, Quiz, Question, UserAnswer, Progress, Note 
 from routers import auth_router, quiz_router, progress_router, notes_router
 from config import settings
 
@@ -15,11 +15,11 @@ from config import settings
 # Debug: Print DB Host to Vercel logs (excluding credentials)
 try:
     db_host = settings.DATABASE_URL.split("@")[-1]
-    print(f"🚀 Connecting to database host: {db_host}")
+    print(f"Connecting to database host: {db_host}")
 except Exception:
-    print("🚀 Connecting to database...")
+    print("Connecting to database...")
 
-Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)   
 
 # Create FastAPI app
 app = FastAPI(
@@ -65,4 +65,4 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=port,
         reload=False if os.environ.get("PORT") else True
-    )
+)
